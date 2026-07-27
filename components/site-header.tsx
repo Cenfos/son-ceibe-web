@@ -16,6 +16,8 @@ export function SiteHeader() {
 
   const links = [
     { href: "#music", label: tr.nav.music },
+    { href: "#videos", label: tr.nav.videos },
+    { href: "#lyrics", label: tr.nav.lyrics },
     { href: "#about", label: tr.nav.about },
     { href: "#shop", label: tr.nav.shop },
   ]
@@ -42,7 +44,7 @@ export function SiteHeader() {
           Son Ceibe
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Principal">
           {links.map((link) => (
             <a
               key={link.href}
