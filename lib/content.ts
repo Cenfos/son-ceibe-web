@@ -4256,6 +4256,7 @@ export const t = {
       preview: "Ver letra",
       chords: "Con acordes",
       allAlbums: "Todos os álbums",
+      sheetMusic: "Ver partitura",
     },
     videos: {
       title: "Vídeos",
@@ -4333,6 +4334,7 @@ export const t = {
       preview: "Ver letra",
       chords: "Con acordes",
       allAlbums: "Todos los álbumes",
+      sheetMusic: "Ver partitura",
     },
     videos: {
       title: "Vídeos",
