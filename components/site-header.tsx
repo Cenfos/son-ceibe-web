@@ -20,6 +20,7 @@ export function SiteHeader() {
     { href: "#lyrics", label: tr.nav.lyrics },
     { href: "#about", label: tr.nav.about },
     { href: "#shop", label: tr.nav.shop },
+    { href: "#contact", label: tr.nav.contact },
   ]
 
   return (

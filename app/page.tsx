@@ -6,6 +6,7 @@ import { VideosSection } from "@/components/videos-section"
 import { LyricsSection } from "@/components/lyrics-section"
 import { AboutSection } from "@/components/about-section"
 import { ShopSection } from "@/components/shop-section"
+import { ContactSection } from "@/components/contact-section"
 import { SiteFooter } from "@/components/site-footer"
 
 export default function Page() {
@@ -19,6 +20,7 @@ export default function Page() {
         <LyricsSection />
         <AboutSection />
         <ShopSection />
+        <ContactSection />
       </main>
       <SiteFooter />
     </LanguageProvider>
