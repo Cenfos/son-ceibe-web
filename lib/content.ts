@@ -31,7 +31,7 @@ export const albums: Album[] = [
   {
     id: "disco-1",
     title: "Noite de Esmorga",
-    year: "",
+    year: "2026",
     spotifyAlbumId: "70dEjVgVVoffxFh2EqAA3G",
     cover: "/albums/noite-de-esmorga-front.png",
     backCover: "/albums/noite-de-esmorga-back.png",
@@ -61,22 +61,22 @@ export const albums: Album[] = [
   },
   {
     id: "disco-2",
-    title: "A xente non cambia",
-    year: "",
+    title: "A Xente non Cambia!",
+    year: "2026",
     spotifyAlbumId: "6OVFWlrjaVwpGyeo7eHkgR",
     cover: "/albums/a-xente-non-cambia-front.png",
     backCover: "/albums/a-xente-non-cambia-back.png",
     tracklist: [
       "Amor dun día",
       "Cousas do Demo",
-      "Cuncas de lume",
-      "Marcos da Leira",
+      "Cuncas de Lume",
+      "Marcos da leira",
       "As mulleres da Terra",
       "Latexo Peregrino",
-      "Tatuaxes na Memoria",
-      "Sen pedir nada por nada",
+      "Tatuaxes na memoria",
+      "Sen pedir nada por nada!",
       "Os dous do bote",
-      "Nos teus ollos",
+      "Nos teus ollos...",
     ],
     description: {
       gl: "A evolución do grupo: máis fusión, máis forza e as mesmas raíces de sempre.",
@@ -115,7 +115,7 @@ export const singles: Single[] = [
   {
     id: "single-1",
     title: "As mulleres da Terra",
-    year: "2025",
+    year: "2026",
     spotifyAlbumId: "5HCsU499k7lw9F1Jvcf8bV",
     cover: "/albums/as-mulleres-da-terra.png",
     tracklist: ["As mulleres da Terra"],
@@ -133,7 +133,7 @@ export const singles: Single[] = [
   {
     id: "single-2",
     title: "Voa ceibe, ti gaivota",
-    year: "2025",
+    year: "2026",
     spotifyAlbumId: "3LQUfdcwwnVUx51MVOheQv",
     cover: "/albums/voa-ceibe-ti-gaivota.png",
     tracklist: ["Voa ceibe, ti gaivota"],
@@ -143,6 +143,24 @@ export const singles: Single[] = [
     },
     links: {
       spotify: "https://open.spotify.com/intl-es/album/3LQUfdcwwnVUx51MVOheQv",
+      appleMusic: "",
+      youtube: "",
+      bandcamp: "",
+    },
+  },
+  {
+    id: "single-3",
+    title: "A miña terra chama!",
+    year: "2026",
+    spotifyAlbumId: "48hyDXKXEDkj22TtJ5KNTX",
+    cover: "/albums/a-mina-terra-chama.png",
+    tracklist: ["A miña terra chama!"],
+    description: {
+      gl: "Un canto á terra que nos chama e ás raíces que nos acompañan.",
+      es: "Un canto a la tierra que nos llama y a las raíces que nos acompañan.",
+    },
+    links: {
+      spotify: "https://open.spotify.com/intl-es/album/48hyDXKXEDkj22TtJ5KNTX",
       appleMusic: "",
       youtube: "",
       bandcamp: "",
@@ -192,7 +210,7 @@ export const videos: Video[] = [
 // REDES SOCIALES
 // ----------------------------------------------------------------------------
 export const socials = {
-  spotify: "https://open.spotify.com/intl-es/album/70dEjVgVVoffxFh2EqAA3G",
+  spotify: "https://open.spotify.com/intl-es/artist/7hr8eGXjzSEsfwFyxwgNNH",
   instagram: "https://www.instagram.com/sonceibebanda/",
   youtube: "https://www.youtube.com/watch?v=t0ET-9PcDv8&list=OLAK5uy_klswnuRhYMs4cZKHA2AQPYfUc_WLZeUdY",
   gmail: "mailto:cenfosgaming@gmail.com",
@@ -4201,7 +4219,7 @@ export const t = {
     hero: {
       tagline: "Folk galego en fusión",
       subtitle:
-        "Dous discos, dous singles, unha mesma raíz. Escoita a Son Ceibe onde queiras.",
+        "Dous discos, tres singles, unha mesma raíz. Escoita a Son Ceibe onde queiras.",
       listen: "Escoitar",
       discover: "Coñecer o grupo",
     },
@@ -4279,7 +4297,7 @@ export const t = {
     hero: {
       tagline: "Folk gallego en fusión",
       subtitle:
-        "Dos discos, dos singles, una misma raíz. Escucha a Son Ceibe donde quieras.",
+        "Dos discos, tres singles, una misma raíz. Escucha a Son Ceibe donde quieras.",
       listen: "Escuchar",
       discover: "Conocer al grupo",
     },

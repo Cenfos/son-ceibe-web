@@ -41,7 +41,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
         <div className="flex flex-col items-center gap-6">
-          <div className="flex items-center gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-5">
             {items.map((item) => (
               <a
                 key={item.label}
@@ -49,7 +49,7 @@ export function SiteFooter() {
                 onClick={item.onClick}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`group flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-all hover:bg-secondary ${
+                className={`group flex items-center justify-center gap-2 rounded-full border border-border bg-card px-3 py-2.5 text-sm font-medium transition-all hover:bg-secondary sm:px-4 ${
                   item.copied ? "border-green-500/50 text-green-600" : "text-foreground"
                 }`}
                 aria-label={item.label}
