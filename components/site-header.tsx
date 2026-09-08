@@ -100,14 +100,14 @@ export function SiteHeader() {
 
       {/* Menú móvil desplegable */}
       {mobileOpen && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
-          <nav className="flex flex-col px-4 py-3" aria-label="Móbil">
+        <div className="absolute right-2 top-full mt-2 w-56 rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-md md:hidden">
+          <nav className="flex flex-col px-2 py-2" aria-label="Móbil">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 {link.label}
               </a>
