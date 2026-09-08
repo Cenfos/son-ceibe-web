@@ -3,8 +3,21 @@ import type { SongLyric } from "./types"
 export const singlesLyrics: SongLyric[] = [
   {
     title: "As mulleres da Terra",
-    album: "Singles",
-    hasChords: false,
+    album: "A Xente non Cambia!",
+    collections: ["A Xente non Cambia!", "Singles"],
+    hasChords: true,
+    guitarGuide: {
+      level: "Medio",
+      key: "La menor (Am)",
+      rhythm: "Rasgueo folk suave: abajo · abajo-arriba · arriba-abajo-arriba.",
+      sections: [
+        { title: "Intro", chords: "Am  ·  F  ·  C  ·  G   (x2)" },
+        { title: "Estrofas", chords: "Am  ·  F  ·  C  ·  G   (repite para cada estrofa)" },
+        { title: "Antes del estribillo", chords: "F  ·  G  ·  Am  ·  E7" },
+        { title: "Estribillo", chords: "C  ·  G  ·  Am  ·  F" },
+        { title: "Cierre", chords: "F  ·  G  ·  Am  ·  E7  ·  Am" },
+      ],
+    },
     lyrics: `Nacín coa forza do vento
 
 co sal prendida na pel,
@@ -154,7 +167,7 @@ latexando o corazón.
   {
     title: "Voa ceibe, ti gaivota",
     album: "Singles",
-    hasChords: true,
+    hasChords: false,
     lyrics: `\\\\[Verso 1]
 
 Un vello me dixo un día,

@@ -4,7 +4,7 @@ export const noiteDeEsmorgaLyrics: SongLyric[] = [
   {
     title: "O home da Terra e o vento",
     album: "Noite de Esmorga",
-    hasChords: false,
+    hasChords: true,
     lyrics: `Do/ Do7-Fa/ Fam-Do/ La7-Rem/ Sol7-Do
 
 Estrofa 1-
@@ -1162,7 +1162,7 @@ aquí está o meu fogar!!!!
   {
     title: "Na mesa das lembranzas",
     album: "Noite de Esmorga",
-    hasChords: true,
+    hasChords: false,
     lyrics: `!
 
 
@@ -1479,7 +1479,7 @@ FA-DO-SOL
   {
     title: "Toda a terra no cantar",
     album: "Noite de Esmorga",
-    hasChords: true,
+    hasChords: false,
     lyrics: `"
 
 \\\\[Estrofa 1]
