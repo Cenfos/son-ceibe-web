@@ -51,10 +51,6 @@ function splitInlineChords(line: string) {
   return found ? { chords: chordCharacters.join("").trimEnd(), lyrics: lyricCharacters.join("").trimEnd() } : null
 }
 
-function safeFileName(name: string) {
-  return name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_|_$/g, "")
-}
-
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character] ?? character)
 }
@@ -159,8 +155,20 @@ function lyricDocument(title: string, collection: string, songs: SongLyric[]) {
     footer { padding: 24px 28px; text-align: center; background: #17251f; color: #fffdf8; font: 13px Arial, sans-serif; line-height: 1.7; }
     footer a { color: #ead39c; text-decoration: none; }
     .print-action { display: block; margin: 18px auto 0; padding: 10px 16px; border: 0; border-radius: 99px; background: #17251f; color: #fffdf8; font: 700 13px Arial, sans-serif; cursor: pointer; }
-    @media print { body { padding: 0; background: #e8efdf; } main { border: 0; max-width: none; } .lyric { break-inside: avoid; } }
-    @media print { .print-action { display: none; } }
+    @page { size: A4 portrait; margin: 12mm; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      main { max-width: none; border: 0; background: #fff; }
+      header { padding: 0 0 8mm; background: #fff; }
+      .lyric { padding: 8mm 0; border-color: #aebda6; }
+      .lyrics { columns: 2; column-gap: 12mm; }
+      .lyrics p, .chord-verse, .guitar-guide { break-inside: avoid; }
+      h2, .collection { break-after: avoid; }
+      .guitar-guide { background: #fff; }
+      footer { padding: 6mm 0 0; background: #fff; color: #111811; }
+      footer a { color: #111811; }
+      .print-action { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -178,25 +186,19 @@ function lyricDocument(title: string, collection: string, songs: SongLyric[]) {
       <button class="print-action" onclick="window.print()">Imprimir / gardar en PDF</button>
     </footer>
   </main>
+  <script>window.addEventListener("load", () => window.print())</script>
 </body>
 </html>`
 }
 
 function openPrintDocument(title: string, collection: string, songs: SongLyric[]) {
-  const blob = new Blob([lyricDocument(title, collection, songs)], { type: "text/html;charset=utf-8" })
-  const url = URL.createObjectURL(blob)
-  const printableWindow = window.open(url, "_blank", "noopener,noreferrer")
+  const printableWindow = window.open("", "_blank")
+  if (!printableWindow) return
 
-  if (!printableWindow) {
-    const link = document.createElement("a")
-    link.href = url
-    link.download = `${safeFileName(title)}_SonCeibe.html`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
-  window.setTimeout(() => URL.revokeObjectURL(url), 60_000)
+  printableWindow.document.open()
+  printableWindow.document.write(lyricDocument(title, collection, songs))
+  printableWindow.document.close()
+  printableWindow.focus()
 }
 
 function formatLyrics(lyrics: string) {
