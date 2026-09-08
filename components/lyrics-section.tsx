@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react"
 import { ChevronDown, Download, Music, Guitar, FileText } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
-import { songLyrics } from "@/lib/content"
+import { songLyrics, type SongLyric } from "@/lib/content"
 import { SheetMusic } from "@/components/sheet-music"
 
 function detectChordLines(text: string): boolean[] {
@@ -42,16 +42,48 @@ function formatLyrics(text: string) {
   })
 }
 
-function downloadLyric(title: string, lyrics: string) {
-  const blob = new Blob([lyrics], { type: "text/plain;charset=utf-8" })
+function safeFileName(name: string) {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "_")
+    .replace(/^_|_$/g, "")
+}
+
+function downloadText(filename: string, content: string) {
+  const blob = new Blob([content], { type: "text/plain;charset=utf-8" })
   const url = URL.createObjectURL(blob)
   const a = document.createElement("a")
   a.href = url
-  a.download = `${title.replace(/\s+/g, "_")}.txt`
+  a.download = filename
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
   URL.revokeObjectURL(url)
+}
+
+function downloadLyric(song: SongLyric) {
+  const content = [`SON CEIBE`, song.album, "", song.title, "=".repeat(song.title.length), "", song.lyrics, "", "sonceibe.es"].join("\n")
+  downloadText(`${safeFileName(song.title)}_SonCeibe.txt`, content)
+}
+
+function downloadCollection(album: string, songs: SongLyric[]) {
+  const content = [
+    "SON CEIBE",
+    album,
+    "=".repeat(album.length),
+    "",
+    ...songs.flatMap((song, index) => [
+      `${index + 1}. ${song.title}`,
+      "-".repeat(song.title.length + 3),
+      "",
+      song.lyrics,
+      "",
+      "",
+    ]),
+    "sonceibe.es",
+  ].join("\n")
+  downloadText(`${safeFileName(album)}_Letras_SonCeibe.txt`, content)
 }
 
 export function LyricsSection() {
@@ -106,6 +138,16 @@ export function LyricsSection() {
             ))}
           </div>
 
+          <div className="mb-8 flex justify-center">
+            <button
+              onClick={() => downloadCollection(filterAlbum === "all" ? "Son Ceibe · Todas as letras" : filterAlbum, filteredSongs)}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-background"
+            >
+              <Download className="size-4" />
+              {filterAlbum === "all" ? tr.lyrics.downloadAll : `${tr.lyrics.downloadCollection}: ${filterAlbum}`}
+            </button>
+          </div>
+
           {/* Lista de canciones */}
           <div className="space-y-3">
             {filteredSongs.map((song) => {
@@ -157,7 +199,7 @@ export function LyricsSection() {
                               Ver partitura
                             </button>
                             <button
-                              onClick={() => downloadLyric(song.title, song.lyrics)}
+                              onClick={() => downloadLyric(song)}
                               className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                             >
                               <Download className="size-3.5" />
