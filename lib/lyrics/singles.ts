@@ -313,6 +313,107 @@ G  D  G
     title: "A miña terra chama!",
     album: "Singles",
     hasChords: false,
-    lyrics: "[Verse 1]\nSaímos catro da casa, unha mochila e ilusión,\nGalicia no retrovisor, Londres no corazón.\nAvión arriba, nubes fóra, mans ben apertadas,\ncomeza a aventura que a familia agardaba...\n\n[Verse 2]\nLondres é un trebón de luces, de linguas e de cor,\ndo Big Ben ao Támesis, todo é un rumor.\nMetro que vai e que vén, nós perdidos e rindo,\nque bonito é perderse se é contigo!\n\n[Pre-Chorus]\nLevo as vosas risas gardadas no peto,\ncada foto, cada paso, cada conto feito.\nPois o mundo é máis fermoso se o vexo convosco,\nsodes o meu mapa, o meu norte e o meu todo!\n\n[Chorus]\nE Londres brilla, si, pero a miña terra chama!\nBrilla Londres, pero o lar é chama!\nMil lembranzas novas que nunca se apagan,\nmais volvemos xuntos, a Nosa Terra chama!\nOh-oh-oh, a Nosa Terra chama!\nOh-oh-oh, onde o mar cantando brama!\n\n[Verse 3 - Rap]\nCamiñamos lado a lado, risas polo camiño,\nfalando da nosa vida, do destino e do cariño.\nBrindamos todos xuntos, sen présa nin apuro,\nporque estes momentos non se mercan con un duro!\n\n[Verse 4 - Rap]\nPaseamos pola historia dun Londres descoñecido,\ncada rúa era un conto, cada paso un sentido,\nChinatown regalounos arrecendos e sabor,\nalí fóisenos a tarde cos farolillos de cor!\n\n[Chorus]\nE Londres brilla, si, pero a miña terra chama!\nBrilla Londres, pero o lar é chama!\nMil lembranzas novas que nunca se apagan,\nmais volvemos xuntos, a Nosa Terra chama!\nOh-oh-oh, a Nosa Terra chama!\nOh-oh-oh, onde o mar cantando brama!\n\n[Verse 5 - Rap]\nSeis pegadas debuxando cada rúa de Londres,\ncada ponte, cada praza, cada un dos seus nomes.\nUnha viaxe en familia non se pode mercar,\nqueda escrita na memoria... pra sempre lembrar.\n\n[Verse 6 - Rap]\nTrouxen o meu mundo enteiro pegadiño ao meu carón,\nlevei pouca equipaxe, pero cheo o corazón.\nNa maleta non collían tantos soños compartidos,\nvosas risas, vosa troula... quedaron sempre conmigo!\n\n[Bridge]\nPodemos cruzar o mundo, cruzar o mar,\npero hai un fío verde que nos vai atar.\nÉ a morriña bonita, que non fai chorar,\né a que che di: xa podes regresar…\nxa podes regresar…\n\n[Final Chorus]\nE Londres brilla, si, pero a miña terra chama!\nBrilla Londres, pero o lar é chama!\nMil lembranzas novas que nunca se apagan,\nmais volvemos xuntos, a Nosa Terra chama!\nOh-oh-oh, a Nosa Terra chama!\nOh-oh-oh, onde o mar cantando brama!\n\n[Outro]\nA miña Terra chama, a miña Terra chama!\nVolver xa á rutina, de feiras, de mariscadas.\nA miña Terra chama, a miña Terra chama!\nFestas son na nosa aldea cando está a tocar a gaita!\nA miña Terra chama, a miña Terra chama!\nTeño sede da lareira, viño en cunca e churrascada!\nA miña Terra chama, a miña Terra chama!\nEsquezamos o asfalto para sentir herba mollada!\n\n[Bridge]\nLevo as vosas risas gardadas no peito,\nsodes o meu mapa, o meu norte e o meu credo!\nHai viaxes que rematan cando chega o avión,\ne outras quedan para sempre gardadas no corazón.\n\n[Chorus]\nE Londres brilla, si, pero a miña terra chama!\nBrilla Londres, pero o lar é chama!\nMil lembranzas novas que nunca se apagan,\nmais volvemos xuntos, a Nosa Terra chama!\nOh-oh-oh, a Nosa Terra chama!\nOh-oh-oh, onde o mar cantando brama!\npero a miña Terra chama!\n(Aii-aii-aii- aiii – aiiiiii...! )\nA miña terra chama!\nA miña terra chama!\nA miña terra chama!",
+    lyrics: `[Verse 1]
+Saímos catro da casa, unha mochila e ilusión,
+Galicia no retrovisor, Londres no corazón.
+Avión arriba, nubes fóra, mans ben apertadas,
+comeza a aventura que a familia agardaba...
+
+[Verse 2]
+Londres é un trebón de luces, de linguas e de cor,
+do Big Ben ao Támesis, todo é un rumor.
+Metro que vai e que vén, nós perdidos e rindo,
+que bonito é perderse se é contigo!
+
+[Pre-Chorus]
+Levo as vosas risas gardadas no peto,
+cada foto, cada paso, cada conto feito.
+Pois o mundo é máis fermoso se o vexo convosco,
+sodes o meu mapa, o meu norte e o meu todo!
+
+[Chorus]
+E Londres brilla, si, pero a miña terra chama!
+Brilla Londres, pero o lar é chama!
+Mil lembranzas novas que nunca se apagan,
+mais volvemos xuntos, a Nosa Terra chama!
+Oh-oh-oh, a Nosa Terra chama!
+Oh-oh-oh, onde o mar cantando brama!
+
+[Verse 3 - Rap]
+Camiñamos lado a lado, risas polo camiño,
+falando da nosa vida, do destino e do cariño.
+Brindamos todos xuntos, sen présa nin apuro,
+porque estes momentos non se mercan con un duro!
+
+[Verse 4 - Rap]
+Paseamos pola historia dun Londres descoñecido,
+cada rúa era un conto, cada paso un sentido,
+Chinatown regalounos arrecendos e sabor,
+alí fóisenos a tarde cos farolillos de cor!
+
+[Chorus]
+E Londres brilla, si, pero a miña terra chama!
+Brilla Londres, pero o lar é chama!
+Mil lembranzas novas que nunca se apagan,
+mais volvemos xuntos, a Nosa Terra chama!
+Oh-oh-oh, a Nosa Terra chama!
+Oh-oh-oh, onde o mar cantando brama!
+
+[Verse 5 - Rap]
+Seis pegadas debuxando cada rúa de Londres,
+cada ponte, cada praza, cada un dos seus nomes.
+Unha viaxe en familia non se pode mercar,
+queda escrita na memoria... pra sempre lembrar.
+
+[Verse 6 - Rap]
+Trouxen o meu mundo enteiro pegadiño ao meu carón,
+levei pouca equipaxe, pero cheo o corazón.
+Na maleta non collían tantos soños compartidos,
+vosas risas, vosa troula... quedaron sempre conmigo!
+
+[Bridge]
+Podemos cruzar o mundo, cruzar o mar,
+pero hai un fío verde que nos vai atar.
+É a morriña bonita, que non fai chorar,
+é a que che di: xa podes regresar…
+xa podes regresar…
+
+[Final Chorus]
+E Londres brilla, si, pero a miña terra chama!
+Brilla Londres, pero o lar é chama!
+Mil lembranzas novas que nunca se apagan,
+mais volvemos xuntos, a Nosa Terra chama!
+Oh-oh-oh, a Nosa Terra chama!
+Oh-oh-oh, onde o mar cantando brama!
+
+[Outro]
+A miña Terra chama, a miña Terra chama!
+Volver xa á rutina, de feiras, de mariscadas.
+A miña Terra chama, a miña Terra chama!
+Festas son na nosa aldea cando está a tocar a gaita!
+A miña Terra chama, a miña Terra chama!
+Teño sede da lareira, viño en cunca e churrascada!
+A miña Terra chama, a miña Terra chama!
+Esquezamos o asfalto para sentir herba mollada!
+
+[Bridge]
+Levo as vosas risas gardadas no peito,
+sodes o meu mapa, o meu norte e o meu credo!
+Hai viaxes que rematan cando chega o avión,
+e outras quedan para sempre gardadas no corazón.
+
+[Chorus]
+E Londres brilla, si, pero a miña terra chama!
+Brilla Londres, pero o lar é chama!
+Mil lembranzas novas que nunca se apagan,
+mais volvemos xuntos, a Nosa Terra chama!
+Oh-oh-oh, a Nosa Terra chama!
+Oh-oh-oh, onde o mar cantando brama!
+pero a miña Terra chama!
+(Aii-aii-aii- aiii – aiiiiii...! )
+A miña terra chama!
+A miña terra chama!
+A miña terra chama!`,
   },
 ]
+
