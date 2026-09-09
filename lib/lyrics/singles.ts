@@ -312,103 +312,216 @@ G  D  G
   {
     title: "A miña terra chama!",
     album: "Singles",
-    hasChords: false,
-    lyrics: `[Verse 1]
-Saímos catro da casa, unha mochila e ilusión,
-Galicia no retrovisor, Londres no corazón.
-Avión arriba, nubes fóra, mans ben apertadas,
-comeza a aventura que a familia agardaba...
+    hasChords: true,
+    guitarGuide: {
+      level: "Medio",
+      key: "Sol Maior (G)",
+      rhythm: "Pop/Folk galego (4/4)",
+      sections: [
+        { title: "Intro", chords: "G · D · Em · C (x2)" },
+        { title: "Versos", chords: "G · D · Em · C" },
+        { title: "Pre-estribillo", chords: "Am · Bm · C · D (x2)" },
+        { title: "Estribillo", chords: "G-D · Em-C · G-D · Em-C · G-D · Em-C" },
+        { title: "Ponte suave", chords: "Em-Bm · C-D · Em-Bm · C-D" },
+        { title: "Outro / foliada", chords: "G · D · Em · C (x2)" },
+        { title: "Ponte II", chords: "Am · Bm · C · D" },
+        { title: "Outro final", chords: "D · G · D · Em · C · G" },
+      ],
+    },
+    lyrics: `[Intro]
+G - D - Em - C (x2)
+Ay-ai-ai! Ay-ai-ai!
 
-[Verse 2]
-Londres é un trebón de luces, de linguas e de cor,
-do Big Ben ao Támesis, todo é un rumor.
-Metro que vai e que vén, nós perdidos e rindo,
-que bonito é perderse se é contigo!
+[Verso 1]
+G
+Saímos catro da casa,
+D
+unha mochila e ilusión,
+Em
+Galicia no retrovisor,
+C
+Londres no corazón.
+G
+Avión arriba, nubes fóra,
+D
+mans ben apertadas,
+Em
+comeza a aventura
+C
+que a familia agardaba...
 
-[Pre-Chorus]
-Levo as vosas risas gardadas no peto,
-cada foto, cada paso, cada conto feito.
-Pois o mundo é máis fermoso se o vexo convosco,
-sodes o meu mapa, o meu norte e o meu todo!
+[Verso 2]
+G
+Londres é un trebón de luces,
+D
+de linguas e de cor,
+Em
+do Big Ben ao Támesis,
+C
+todo é un rumor.
+G
+Metro que vai e que vén,
+D
+nós perdidos e rindo,
+Em
+que bonito é
+C
+perderse se é contigo!
 
-[Chorus]
+[Pre-estribillo]
+Am
+Levo as vosas risas
+Bm
+gardadas no peto,
+C
+cada foto, cada paso,
+D
+cada conto feito.
+Am
+Pois o mundo é máis fermoso
+Bm
+si o vexo convosco,
+C
+sodes o meu mapa,
+D
+o meu norte e o meu todo!
+
+[Estribillo]
+G              D
 E Londres brilla, si, pero a miña terra chama!
+Em             C
 Brilla Londres, pero o lar é chama!
+G              D
 Mil lembranzas novas que nunca se apagan,
+Em             C
 mais volvemos xuntos, a Nosa Terra chama!
+G  D
 Oh-oh-oh, a Nosa Terra chama!
+Em  C
 Oh-oh-oh, onde o mar cantando brama!
 
-[Verse 3 - Rap]
+[Verso 3 - Rap / rítmico]
+G
 Camiñamos lado a lado, risas polo camiño,
+D
 falando da nosa vida, do destino e do cariño.
+Em
 Brindamos todos xuntos, sen présa nin apuro,
+C
 porque estes momentos non se mercan con un duro!
 
-[Verse 4 - Rap]
+[Verso 4 - Rap / rítmico]
+G
 Paseamos pola historia dun Londres descoñecido,
+D
 cada rúa era un conto, cada paso un sentido,
+Em
 Chinatown regalounos arrecendos e sabor,
+C
 alí fóisenos a tarde cos farolillos de cor!
 
-[Chorus]
+[Estribillo]
+G              D
 E Londres brilla, si, pero a miña terra chama!
+Em             C
 Brilla Londres, pero o lar é chama!
+G              D
 Mil lembranzas novas que nunca se apagan,
+Em             C
 mais volvemos xuntos, a Nosa Terra chama!
+G  D
 Oh-oh-oh, a Nosa Terra chama!
+Em  C
 Oh-oh-oh, onde o mar cantando brama!
 
-[Verse 5 - Rap]
+[Verso 5 - Rap]
+G
 Seis pegadas debuxando cada rúa de Londres,
+D
 cada ponte, cada praza, cada un dos seus nomes.
+Em
 Unha viaxe en familia non se pode mercar,
+C
 queda escrita na memoria... pra sempre lembrar.
 
-[Verse 6 - Rap]
+[Verso 6 - Rap]
+G
 Trouxen o meu mundo enteiro pegadiño ao meu carón,
+D
 levei pouca equipaxe, pero cheo o corazón.
+Em
 Na maleta non collían tantos soños compartidos,
+C
 vosas risas, vosa troula... quedaron sempre conmigo!
 
-[Bridge]
+[Ponte - suave]
+Em             Bm
 Podemos cruzar o mundo, cruzar o mar,
+C              D
 pero hai un fío verde que nos vai atar.
+Em             Bm
 É a morriña bonita, que non fai chorar,
+C              D
 é a que che di: xa podes regresar…
 xa podes regresar…
 
-[Final Chorus]
+[Estribillo]
+G              D
 E Londres brilla, si, pero a miña terra chama!
+Em             C
 Brilla Londres, pero o lar é chama!
+G              D
 Mil lembranzas novas que nunca se apagan,
+Em             C
 mais volvemos xuntos, a Nosa Terra chama!
+G  D
 Oh-oh-oh, a Nosa Terra chama!
+Em  C
 Oh-oh-oh, onde o mar cantando brama!
 
-[Outro]
+[Outro - foliada / festivo]
+G
 A miña Terra chama, a miña Terra chama!
+D
 Volver xa á rutina, de feiras, de mariscadas.
+Em
 A miña Terra chama, a miña Terra chama!
+C
 Festas son na nosa aldea cando está a tocar a gaita!
+G
 A miña Terra chama, a miña Terra chama!
+D
 Teño sede da lareira, viño en cunca e churrascada!
+Em
 A miña Terra chama, a miña Terra chama!
+C
 Esquezamos o asfalto para sentir herba mollada!
 
-[Bridge]
+[Ponte II]
+(Progresión da sección)
+Am - Bm - C - D
 Levo as vosas risas gardadas no peito,
 sodes o meu mapa, o meu norte e o meu credo!
 Hai viaxes que rematan cando chega o avión,
 e outras quedan para sempre gardadas no corazón.
 
-[Chorus]
+[Estribillo final]
+G              D
 E Londres brilla, si, pero a miña terra chama!
+Em             C
 Brilla Londres, pero o lar é chama!
+G              D
 Mil lembranzas novas que nunca se apagan,
+Em             C
 mais volvemos xuntos, a Nosa Terra chama!
+G  D
 Oh-oh-oh, a Nosa Terra chama!
+Em  C
 Oh-oh-oh, onde o mar cantando brama!
+
+[Outro final]
+(Progresión da sección)
+D - G - D - Em - C - G
 pero a miña Terra chama!
 (Aii-aii-aii- aiii – aiiiiii...! )
 A miña terra chama!
@@ -416,4 +529,3 @@ A miña terra chama!
 A miña terra chama!`,
   },
 ]
-
