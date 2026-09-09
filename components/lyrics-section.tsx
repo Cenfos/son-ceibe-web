@@ -84,7 +84,7 @@ function lyricBodyHtml(lyrics: string) {
       return
     }
 
-    const inline = splitInlineChords(clean)
+    const inline = pendingChords ? null : splitInlineChords(clean)
     if (pendingChords || inline) {
       formatted.push(`<div class="chord-verse"><p class="chords">${escapeHtml(pendingChords ?? inline?.chords ?? "")}</p><p class="line">${escapeHtml(inline?.lyrics ?? clean)}</p></div>`)
       pendingChords = null
@@ -143,7 +143,7 @@ function lyricDocument(title: string, collection: string, songs: SongLyric[]) {
     .chords { margin: 14px 0 3px; color: #624b1c; font: 700 14px/1.4 "Courier New", monospace; letter-spacing: .04em; }
     .chord-verse { margin: 0 0 8px; font-family: "Courier New", monospace; }
     .chord-verse .chords { margin: 0; white-space: pre; }
-    .chord-verse .line { margin: 0; white-space: pre; font: 18px/1.65 "Courier New", monospace; }
+    .chord-verse .line { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 18px/1.65 "Courier New", monospace; }
     .section { margin: 24px 0 8px; color: #624b1c; font: 700 12px Arial, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
     .space { height: 8px; }
     .guitar-guide { margin-top: 28px; padding: 18px; border: 1px solid #aebda6; background: rgba(247, 244, 235, .8); font: 14px/1.55 Arial, sans-serif; }
@@ -232,12 +232,12 @@ function formatLyrics(lyrics: string) {
       return
     }
 
-    const inline = splitInlineChords(clean)
+    const inline = pendingChords ? null : splitInlineChords(clean)
     if (pendingChords || inline) {
       formatted.push(
         <div key={`verse-${index}`} className="font-mono text-base leading-7">
-          <p className="m-0 whitespace-pre text-[#624b1c]">{pendingChords ?? inline?.chords}</p>
-          <p className="m-0 whitespace-pre text-[#101610]">{inline?.lyrics ?? clean}</p>
+          <p className="m-0 whitespace-pre font-bold text-[#624b1c]">{pendingChords ?? inline?.chords}</p>
+          <p className="m-0 whitespace-pre-wrap break-words text-[#101610]">{inline?.lyrics ?? clean}</p>
         </div>,
       )
       pendingChords = null
@@ -339,3 +339,4 @@ export function LyricsSection() {
     </section>
   )
 }
+
