@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/components/language-provider"
-import { Play, Users, Music, FileText } from "lucide-react"
+import { Play, Users, Music, FileText, Clapperboard } from "lucide-react"
 
 export function HeroSection() {
   const { tr } = useLanguage()
@@ -48,6 +48,16 @@ export function HeroSection() {
           >
             <Users className="size-4" />
             {tr.hero.discover}
+          </a>
+          <a
+            href="https://sonceibe-studio.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/15 px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent/25"
+            title="Abrir SonCeibe Studio"
+          >
+            <Clapperboard className="size-4" />
+            Studio
           </a>
         </div>
 
