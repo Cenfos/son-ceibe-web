@@ -338,7 +338,7 @@ export const t = {
       subtitle:
         "Dos discos, cuatro singles, una misma raíz. Escucha a Son Ceibe donde quieras.",
       listen: "Escuchar",
-      discover: "Conocer al grupo",
+      discover: "Conocer el grupo",
     },
     music: {
       title: "Nuestros discos",
@@ -346,7 +346,7 @@ export const t = {
       singlesTitle: "Singles",
       singlesSubtitle: "Las últimas canciones de Son Ceibe.",
       listenSpotify: "Escuchar en Spotify",
-      comingSoon: "Reprodutor dispoñible en breve",
+      comingSoon: "Reproductor disponible en breve",
       platforms: "Plataformas",
       tracklist: "Canciones",
       viewFront: "Ver portada",
