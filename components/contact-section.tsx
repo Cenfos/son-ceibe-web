@@ -170,10 +170,10 @@ export function ContactSection() {
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">{tr.contact.orEmail}</p>
           <a
-            href="mailto:cenfosgaming@gmail.com"
+            href="mailto:sonceibecantigas@gmail.com"
             className="mt-1 inline-block text-sm font-medium text-accent underline-offset-4 hover:underline"
           >
-            cenfosgaming@gmail.com
+            sonceibecantigas@gmail.com
           </a>
         </div>
       </div>
