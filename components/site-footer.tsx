@@ -14,12 +14,12 @@ export function SiteFooter() {
     if (typeof window !== "undefined" && !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
       e.preventDefault()
       try {
-        await navigator.clipboard.writeText("cenfosgaming@gmail.com")
+        await navigator.clipboard.writeText("sonceibecantigas@gmail.com")
         setCopied(true)
         setTimeout(() => setCopied(false), 2500)
       } catch {
         // Fallback: abrir mailto igualmente
-        window.location.href = "mailto:cenfosgaming@gmail.com"
+        window.location.href = "mailto:sonceibecantigas@gmail.com"
       }
     }
   }
@@ -31,7 +31,7 @@ export function SiteFooter() {
     {
       icon: copied ? Check : Mail,
       label: copied ? (lang === "gl" ? "Copiado!" : "¡Copiado!") : "Email",
-      href: "mailto:cenfosgaming@gmail.com",
+      href: "mailto:sonceibecantigas@gmail.com",
       onClick: handleEmailClick,
       copied,
     },
