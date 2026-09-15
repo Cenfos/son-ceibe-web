@@ -16,7 +16,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: 'Son Ceibe · Folk galego en fusión',
   description:
-    'Web oficial de Son Ceibe. Escoita os seus dous discos e tres singles en Spotify, coñece o grupo e merca a súa música. Folk galego en fusión.',
+    'Web oficial de Son Ceibe. Escoita os seus dous discos e catro singles en Spotify, coñece o grupo e merca a súa música. Folk galego en fusión.',
   icons: {
     icon: '/son-ceibe-logo.png',
     apple: '/son-ceibe-logo.png',
