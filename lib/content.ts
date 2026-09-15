@@ -113,6 +113,24 @@ export type Single = {
 
 export const singles: Single[] = [
   {
+    id: "single-4",
+    title: "As dúas Marías",
+    year: "2026",
+    spotifyAlbumId: "5B35ycmkjTikR6S2GppIEB",
+    cover: "/albums/as-duas-marias.svg",
+    tracklist: ["As dúas Marías"],
+    description: {
+      gl: "Unha homenaxe a Maruxa e Corália, as dúas Marías de Compostela: memoria, resistencia e liberdade polas rúas da cidade.",
+      es: "Un homenaje a Maruxa y Corália, las dos Marías de Compostela: memoria, resistencia y libertad por las calles de la ciudad.",
+    },
+    links: {
+      spotify: "https://open.spotify.com/intl-es/album/5B35ycmkjTikR6S2GppIEB",
+      appleMusic: "",
+      youtube: "",
+      bandcamp: "",
+    },
+  },
+  {
     id: "single-1",
     title: "As mulleres da Terra",
     year: "2026",
@@ -238,7 +256,7 @@ export const t = {
     hero: {
       tagline: "Folk galego en fusión",
       subtitle:
-        "Dous discos, tres singles, unha mesma raíz. Escoita a Son Ceibe onde queiras.",
+        "Dous discos, catro singles, unha mesma raíz. Escoita a Son Ceibe onde queiras.",
       listen: "Escoitar",
       discover: "Coñecer o grupo",
     },
@@ -318,7 +336,7 @@ export const t = {
     hero: {
       tagline: "Folk gallego en fusión",
       subtitle:
-        "Dos discos, tres singles, una misma raíz. Escucha a Son Ceibe donde quieras.",
+        "Dos discos, cuatro singles, una misma raíz. Escucha a Son Ceibe donde quieras.",
       listen: "Escuchar",
       discover: "Conocer al grupo",
     },
@@ -328,7 +346,7 @@ export const t = {
       singlesTitle: "Singles",
       singlesSubtitle: "Las últimas canciones de Son Ceibe.",
       listenSpotify: "Escuchar en Spotify",
-      comingSoon: "Reproductor disponible en breve",
+      comingSoon: "Reprodutor dispoñible en breve",
       platforms: "Plataformas",
       tracklist: "Canciones",
       viewFront: "Ver portada",
@@ -387,4 +405,3 @@ export const t = {
     },
   },
 } as const
-
