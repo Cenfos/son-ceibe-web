@@ -117,7 +117,7 @@ export const singles: Single[] = [
     title: "As dúas Marías",
     year: "2026",
     spotifyAlbumId: "5B35ycmkjTikR6S2GppIEB",
-    cover: "/albums/as-duas-marias.svg",
+    cover: "/albums/as-duas-marias-cover.jpg",
     tracklist: ["As dúas Marías"],
     description: {
       gl: "Unha homenaxe a Maruxa e Corália, as dúas Marías de Compostela: memoria, resistencia e liberdade polas rúas da cidade.",
