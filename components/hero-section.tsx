@@ -1,7 +1,8 @@
 "use client"
 
 import { useLanguage } from "@/components/language-provider"
-import { Play, Users, Music, FileText, Clapperboard } from "lucide-react"
+import Image from "next/image"
+import { Play, Users, Music, FileText } from "lucide-react"
 
 export function HeroSection() {
   const { tr } = useLanguage()
@@ -9,23 +10,34 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[80vh] items-center justify-center overflow-hidden"
+      className="relative flex min-h-[80vh] items-center justify-center overflow-hidden pb-20 pt-28"
     >
       {/* Imagen de fondo */}
       <div className="absolute inset-0">
-        <img
-          src="/hero-band.png"
+          <Image
+          src="/hero-band.webp"
           alt="Son Ceibe en concerto"
-          className="h-full w-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
       </div>
 
       {/* Contenido */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-6">
-        <h1 className="font-serif text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-          Son Ceibe
-        </h1>
+        <h1 className="sr-only">Son Ceibe</h1>
+        <Image
+          src="/son-ceibe-wordmark-wood.png"
+          alt=""
+          aria-hidden="true"
+          width={1728}
+          height={928}
+          priority
+          sizes="(max-width: 640px) 90vw, 580px"
+          className="mx-auto h-auto w-full max-w-[580px] drop-shadow-[0_3px_3px_rgba(0,0,0,0.65)]"
+        />
         <p className="mt-4 text-xl font-medium tracking-wide text-accent sm:text-2xl">
           {tr.hero.tagline}
         </p>
@@ -36,42 +48,32 @@ export function HeroSection() {
         {/* Botones principales */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="#music"
+            href="/musica"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-all hover:opacity-90 hover:shadow-xl"
           >
             <Play className="size-4" />
             {tr.hero.listen}
           </a>
           <a
-            href="#about"
+            href="/grupo"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
           >
             <Users className="size-4" />
             {tr.hero.discover}
-          </a>
-          <a
-            href="https://sonceibe-studio.vercel.app"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/15 px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent/25"
-            title="Abrir SonCeibe Studio"
-          >
-            <Clapperboard className="size-4" />
-            Studio
           </a>
         </div>
 
         {/* Accesos directos */}
         <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
           <a
-            href="#music"
+            href="/musica"
             className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent/20"
           >
             <Music className="size-3.5" />
             {tr.nav.music}
           </a>
           <a
-            href="#lyrics"
+            href="/letras"
             className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-accent/20"
           >
             <FileText className="size-3.5" />

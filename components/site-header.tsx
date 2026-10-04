@@ -1,63 +1,57 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 
 export function SiteHeader() {
   const { lang, setLang, tr } = useLanguage()
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
+  const pathname = usePathname()
   const links = [
-    { href: "#music", label: tr.nav.music },
-    { href: "#videos", label: tr.nav.videos },
-    { href: "#lyrics", label: tr.nav.lyrics },
-    { href: "#about", label: tr.nav.about },
-    { href: "#shop", label: tr.nav.shop },
-    { href: "#contact", label: tr.nav.contact },
+    { href: "/", label: tr.nav.home },
+    { href: "/singles", label: tr.nav.singles },
+    { href: "/albums", label: tr.nav.albums },
+    { href: "/videos", label: tr.nav.videos },
+    { href: "/letras", label: tr.nav.lyrics },
+    { href: "/grupo", label: tr.nav.about },
+    ...(pathname === "/" ? [{ href: "https://sonceibe-studio.vercel.app/", label: "Studio" }] : []),
   ]
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled
-          ? "border-b border-border bg-background/85 backdrop-blur-md"
-          : "border-b border-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md"
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
         {/* Logo */}
-        <a
-          href="#top"
+        <Link
+          href="/"
+          aria-label="Son Ceibe · Inicio"
           className="flex shrink-0 items-center gap-2.5 font-serif text-lg font-semibold tracking-tight text-foreground"
         >
           <img
-            src="/son-ceibe-logo.png"
+            src="/son-ceibe-logo.webp"
             alt=""
             aria-hidden="true"
             className="h-9 w-9 rounded-full object-cover"
           />
           <span className="hidden sm:inline">Son Ceibe</span>
-        </a>
+        </Link>
 
         {/* Navegación desktop */}
-        <nav className="hidden items-center gap-5 lg:gap-6 md:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-3 lg:gap-5 md:flex" aria-label="Principal">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -91,7 +85,9 @@ export function SiteHeader() {
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-foreground md:hidden"
-            aria-label={mobileOpen ? "Pechar menú" : "Abrir menú"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+            aria-label={mobileOpen ? (lang === "gl" ? "Pechar menú" : "Cerrar menú") : "Abrir menú"}
           >
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -101,16 +97,17 @@ export function SiteHeader() {
       {/* Menú móvil desplegable */}
       {mobileOpen && (
         <div className="absolute right-2 top-full mt-2 w-56 rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-md md:hidden">
-          <nav className="flex flex-col px-2 py-2" aria-label="Móbil">
+          <nav id="mobile-navigation" className="flex flex-col px-2 py-2" aria-label="Móbil">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
                 onClick={() => setMobileOpen(false)}
                 className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

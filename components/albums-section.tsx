@@ -6,18 +6,19 @@ import { useLanguage } from "@/components/language-provider"
 import { albums, singles, type Album, type Single } from "@/lib/content"
 import { SpotifyEmbed } from "@/components/spotify-embed"
 
-export function AlbumsSection() {
+export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "albums" }) {
   const { tr } = useLanguage()
+  const AlbumHeading = mode === "all" ? "h2" : "h1"
 
   return (
     <section id="music" className="scroll-mt-16 bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         {/* Singles */}
-        <div className="mb-20">
+        {mode !== "albums" && <div className={mode === "all" ? "mb-20" : ""}>
           <div className="mb-14 max-w-2xl">
-            <h2 className="text-balance font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+            <h1 className="text-balance font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               {tr.music.singlesTitle}
-            </h2>
+            </h1>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
               {tr.music.singlesSubtitle}
             </p>
@@ -30,11 +31,14 @@ export function AlbumsSection() {
           </div>
         </div>
 
+        }
+
+        {mode !== "singles" && <>
         {/* Discos */}
         <div className="mb-14 max-w-2xl">
-          <h2 className="text-balance font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+          <AlbumHeading className="text-balance font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
             {tr.music.title}
-          </h2>
+          </AlbumHeading>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
             {tr.music.subtitle}
           </p>
@@ -45,6 +49,7 @@ export function AlbumsSection() {
             <AlbumCard key={album.id} album={album} reversed={index % 2 === 1} />
           ))}
         </div>
+        </>}
       </div>
     </section>
   )
@@ -67,6 +72,7 @@ function SingleCard({ single }: { single: Single }) {
         <img
           src={single.cover || "/placeholder.svg"}
           alt={`Portada do single ${single.title} de Son Ceibe`}
+          loading="lazy"
           className="aspect-square w-full object-cover"
         />
         {single.year ? (
@@ -166,6 +172,7 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
                 : `Portada do disco ${album.title} de Son Ceibe`
             }
             className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
           />
           {album.year ? (
             <span className="absolute left-4 top-4 rounded-full bg-background/85 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur">

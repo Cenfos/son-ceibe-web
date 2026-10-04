@@ -1,28 +1,17 @@
-import { LanguageProvider } from "@/components/language-provider"
 import { SiteHeader } from "@/components/site-header"
-import { HeroSection } from "@/components/hero-section"
-import { AlbumsSection } from "@/components/albums-section"
-import { VideosSection } from "@/components/videos-section"
-import { LyricsSection } from "@/components/lyrics-section"
-import { AboutSection } from "@/components/about-section"
-import { ShopSection } from "@/components/shop-section"
-import { ContactSection } from "@/components/contact-section"
 import { SiteFooter } from "@/components/site-footer"
+import { HeroSection } from "@/components/hero-section"
+import { HomeHighlights } from "@/components/home-highlights"
 
 export default function Page() {
   return (
-    <LanguageProvider>
+    <>
       <SiteHeader />
       <main>
         <HeroSection />
-        <AlbumsSection />
-        <VideosSection />
-        <LyricsSection />
-        <AboutSection />
-        <ShopSection />
-        <ContactSection />
+        <HomeHighlights />
       </main>
       <SiteFooter />
-    </LanguageProvider>
+    </>
   )
 }

@@ -11,9 +11,10 @@ export function AboutSection() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div className="relative flex items-center justify-center overflow-hidden rounded-2xl border border-border bg-[oklch(0.14_0.01_150)] shadow-sm">
             <img
-              src="/son-ceibe-logo.png"
+              src="/son-ceibe-logo.webp"
               alt="Logotipo de Son Ceibe: un triskel celta de madeira rodeado de lapas azuis"
               className="aspect-square w-full max-w-md object-contain p-6"
+              loading="lazy"
             />
           </div>
           <div>

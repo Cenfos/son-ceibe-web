@@ -90,7 +90,7 @@ function generateSheetHTML(song: SongLyric) {
 <body>
 <div class="sheet">
   <div class="header">
-    <img src="https://www.sonceibe.es/son-ceibe-logo.png" alt="Son Ceibe" class="logo" onerror="this.style.display='none'">
+    <img src="https://www.sonceibe.es/son-ceibe-logo.webp" alt="Son Ceibe" class="logo" onerror="this.style.display='none'">
     <h1 class="title">${song.title}</h1>
     <p class="subtitle">Son Ceibe · ${song.album}</p>
   </div>
@@ -148,7 +148,7 @@ export function SheetMusic({ song, onClose }: { song: SongLyric; onClose: () => 
         <div className="relative border-b border-[rgba(201,169,110,0.2)] px-6 py-6 text-center md:px-10 md:py-8"
           style={{ background: "linear-gradient(180deg, rgba(26,38,52,0.95) 0%, rgba(30,45,61,0.98) 100%)" }}>
           <img
-            src="/son-ceibe-logo.png"
+            src="/son-ceibe-logo.webp"
             alt="Son Ceibe"
             className="mx-auto mb-4 block h-20 w-20 rounded-full border-[3px] border-[rgba(201,169,110,0.4)] object-cover shadow-lg md:h-24 md:w-24"
             style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.4), 0 0 30px rgba(201,169,110,0.15)" }}

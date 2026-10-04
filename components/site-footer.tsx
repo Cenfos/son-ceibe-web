@@ -1,9 +1,10 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { socials } from "@/lib/content"
-import { Camera, Video, Mail, Music, Check } from "lucide-react"
+import { Camera, Video, Mail, Music, Check, MessageSquare } from "lucide-react"
 
 export function SiteFooter() {
   const { tr, lang } = useLanguage()
@@ -35,6 +36,7 @@ export function SiteFooter() {
       onClick: handleEmailClick,
       copied,
     },
+    { icon: MessageSquare, label: tr.nav.contact, href: "/contacto" },
   ]
 
   return (
@@ -64,6 +66,12 @@ export function SiteFooter() {
               </a>
             ))}
           </div>
+
+          <nav aria-label={lang === "gl" ? "Información legal" : "Información legal"} className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+            <Link href="/aviso-legal" className="hover:text-foreground hover:underline">Aviso legal</Link>
+            <Link href="/privacidad" className="hover:text-foreground hover:underline">{lang === "gl" ? "Política de privacidade" : "Política de privacidad"}</Link>
+            <Link href="/cookies" className="hover:text-foreground hover:underline">Cookies</Link>
+          </nav>
 
           <p className="text-center text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Son Ceibe. {tr.footer.rights}

@@ -174,7 +174,7 @@ function lyricDocument(title: string, collection: string, songs: SongLyric[]) {
 <body>
   <main>
     <header>
-      <img class="logo" src="https://www.sonceibe.es/son-ceibe-logo.png" alt="Son Ceibe">
+      <img class="logo" src="https://www.sonceibe.es/son-ceibe-logo.webp" alt="Son Ceibe">
       <h1>${escapeHtml(title)}</h1>
       <p class="collection">${escapeHtml(collection)}</p>
     </header>
@@ -255,6 +255,7 @@ export function LyricsSection() {
   const { tr } = useLanguage()
   const [openSong, setOpenSong] = useState<string | null>(null)
   const [filterAlbum, setFilterAlbum] = useState("all")
+  const [search, setSearch] = useState("")
 
   const collections = useMemo(() => {
     const grouped = new Map<string, SongLyric[]>()
@@ -262,14 +263,14 @@ export function LyricsSection() {
     return Array.from(grouped.entries())
   }, [])
 
-  const filteredSongs = useMemo(() => filterAlbum === "all" ? songLyrics : songLyrics.filter((song) => songCollections(song).includes(filterAlbum)), [filterAlbum])
+  const filteredSongs = useMemo(() => songLyrics.filter((song) => (filterAlbum === "all" || songCollections(song).includes(filterAlbum)) && song.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())), [filterAlbum, search])
 
   return (
     <section id="lyrics" className="scroll-mt-16 bg-secondary py-20 md:py-28">
       <div className="mx-auto max-w-4xl px-4 md:px-6">
         <div className="mb-12 text-center">
-          <img src="/son-ceibe-logo.png" alt="Son Ceibe" className="mx-auto mb-5 h-16 w-16 rounded-full object-cover" />
-          <h2 className="font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">{tr.lyrics.title}</h2>
+      <img src="/son-ceibe-logo.webp" alt="Son Ceibe" className="mx-auto mb-5 h-16 w-16 rounded-full object-cover" loading="lazy" />
+          <h1 className="font-serif text-4xl font-semibold tracking-tight text-foreground md:text-5xl">{tr.lyrics.title}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">{tr.lyrics.subtitle}</p>
         </div>
 
@@ -279,6 +280,11 @@ export function LyricsSection() {
               {collection === "all" ? tr.lyrics.allAlbums : collection}
             </button>
           ))}
+        </div>
+
+        <div className="mb-7">
+          <label htmlFor="lyric-search" className="sr-only">Buscar canción</label>
+          <input id="lyric-search" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar canción…" className="mx-auto block w-full max-w-md rounded-full border border-border bg-card px-5 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-accent focus:ring-1 focus:ring-accent" />
         </div>
 
         <div className="mb-8 flex justify-center">
@@ -307,7 +313,7 @@ export function LyricsSection() {
                   <div id={`lyric-${songKey}`} className="border-t border-[#aebda6] px-5 py-7 md:px-8" style={{ background: "linear-gradient(160deg, #edf3e9 0%, #e9e0d2 100%)", color: "#101610" }}>
                     <div className="mx-auto max-w-2xl">
                       <header className="border-b border-[#aebda6] pb-5 text-center">
-                        <img src="/son-ceibe-logo.png" alt="Son Ceibe" className="mx-auto mb-3 h-14 w-14 rounded-full object-cover" />
+                        <img src="/son-ceibe-logo.webp" alt="Son Ceibe" className="mx-auto mb-3 h-14 w-14 rounded-full object-cover" loading="lazy" />
                         <h3 className="font-serif text-3xl font-semibold text-[#101610]">{song.title}</h3>
                         <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-[#4f5d4c]">{displayCollection(song.album)}</p>
                       </header>
@@ -339,4 +345,3 @@ export function LyricsSection() {
     </section>
   )
 }
-

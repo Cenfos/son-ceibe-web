@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { Send, CheckCircle, AlertCircle, Mail, User, MessageSquare, Tag } from "lucide-react"
@@ -7,10 +8,12 @@ import { Send, CheckCircle, AlertCircle, Mail, User, MessageSquare, Tag } from "
 export function ContactSection() {
   const { tr, lang } = useLanguage()
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" })
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!privacyAccepted) return
     setStatus("sending")
 
     // Formspree endpoint — cámbialo por el tuyo en https://formspree.io
@@ -20,11 +23,12 @@ export function ContactSection() {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, privacyConsent: true, privacyVersion: "2026-10-04" }),
       })
 
       if (res.ok) {
         setStatus("success")
+        setPrivacyAccepted(false)
         setFormData({ name: "", email: "", subject: "", message: "" })
       } else {
         setStatus("error")
@@ -125,6 +129,14 @@ export function ContactSection() {
               className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-1 focus:ring-accent"
               placeholder={tr.contact.messagePlaceholder}
             />
+          </div>
+
+          <div className="space-y-3 text-sm text-muted-foreground">
+            <p>{lang === "gl" ? "Responsable: Camilo Rodríguez. Utilizaremos os teus datos para responder á túa consulta, co teu consentimento. O envío tramítase mediante Formspree. Podes retirar o consentimento e exercer os teus dereitos en sonceibecantigas@gmail.com." : "Responsable: Camilo Rodríguez. Utilizaremos tus datos para responder a tu consulta, con tu consentimiento. El envío se tramita mediante Formspree. Puedes retirar el consentimiento y ejercer tus derechos en sonceibecantigas@gmail.com."}</p>
+            <div className="flex items-start gap-3">
+              <input id="privacy-consent" type="checkbox" required checked={privacyAccepted} onChange={e => setPrivacyAccepted(e.target.checked)} className="mt-1 size-4 shrink-0 accent-primary" />
+              <div><label htmlFor="privacy-consent">{lang === "gl" ? "Consinto o tratamento dos meus datos para atender esta consulta." : "Consiento el tratamiento de mis datos para atender esta consulta."}</label>{" "}<Link href="/privacidad" target="_blank" rel="noopener noreferrer" className="text-primary underline">{lang === "gl" ? "Ler a política de privacidade" : "Leer la política de privacidad"}</Link></div>
+            </div>
           </div>
 
           {/* Botón */}

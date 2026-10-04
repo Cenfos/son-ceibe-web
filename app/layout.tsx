@@ -1,25 +1,15 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Fraunces, Geist } from 'next/font/google'
+import { LanguageProvider } from '@/components/language-provider'
 import './globals.css'
-
-const geistSans = Geist({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-serif',
-})
 
 export const metadata: Metadata = {
   title: 'Son Ceibe · Folk galego en fusión',
   description:
-    'Web oficial de Son Ceibe. Escoita os seus dous discos e catro singles en Spotify, coñece o grupo e merca a súa música. Folk galego en fusión.',
+    'Web oficial de Son Ceibe. Escoita a música publicada, consulta as letras e coñece o grupo. Folk galego en fusión.',
   icons: {
-    icon: '/son-ceibe-logo.png',
-    apple: '/son-ceibe-logo.png',
+    icon: '/son-ceibe-logo.webp',
+    apple: '/son-ceibe-logo.webp',
   },
 }
 
@@ -37,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="gl" className={`${geistSans.variable} ${fraunces.variable} bg-background`}>
+    <html lang="gl" className="bg-background">
       <body className="font-sans antialiased">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

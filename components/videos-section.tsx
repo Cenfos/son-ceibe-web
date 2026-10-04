@@ -2,10 +2,12 @@
 
 import { useLanguage } from "@/components/language-provider"
 import { videos } from "@/lib/content"
+import { useState } from "react"
 import { Play } from "lucide-react"
 
 export function VideosSection() {
   const { tr } = useLanguage()
+  const [activeVideo, setActiveVideo] = useState<string | null>(null)
 
   return (
     <section id="videos" className="scroll-mt-16 bg-background py-20 md:py-28">
@@ -26,13 +28,18 @@ export function VideosSection() {
               className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
             >
               <div className="relative aspect-video overflow-hidden bg-black">
-                <iframe
+                {activeVideo === video.id ? <iframe
                   title={video.title}
                   src={`https://www.youtube.com/embed/${video.youtubeId}`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full"
-                />
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                /> : <button type="button" onClick={() => setActiveVideo(video.id)} aria-label={`Reproducir ${video.title}`} className="absolute inset-0 h-full w-full">
+                  <img src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <span className="absolute inset-0 grid place-items-center bg-black/25 text-white"><Play className="size-14 fill-current" /></span>
+                </button>}
               </div>
               <div className="p-4">
                 <h3 className="font-medium text-foreground">{video.title}</h3>
