@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowRight, Music2, Users } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { formatReleaseDate } from "@/lib/release-date"
+import { AlbumPlatformLinks } from "@/components/album-platform-links"
 import { SpotifyEmbed } from "@/components/spotify-embed"
 import { albums, singles, featuredRelease } from "@/lib/content"
 
@@ -61,6 +62,7 @@ export function HomeHighlights() {
               <h3 className="mt-2 font-serif text-2xl font-semibold md:text-3xl"><Link href={`/albums#${album.id}`} className="hover:underline">{album.title}</Link></h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{album.description[lang]}</p>
               <div className="mt-6"><SpotifyEmbed albumId={album.spotifyAlbumId} title={album.title} /></div>
+              <div className="mt-4"><AlbumPlatformLinks album={album} /></div>
               <Link href={`/albums#${album.id}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">{tr.home.viewAlbum}<ArrowRight className="size-4" /></Link>
             </div>
           </article>)}

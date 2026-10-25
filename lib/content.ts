@@ -22,6 +22,8 @@ export type Album = {
   description: Record<Lang, string>
   links: {
     spotify?: string
+    youtubeMusic?: string
+    amazonMusic?: string
     appleMusic?: string
     youtube?: string
     bandcamp?: string
@@ -56,7 +58,9 @@ const albumEntries: Album[] = [
     },
     links: {
       spotify: "https://open.spotify.com/intl-es/album/70dEjVgVVoffxFh2EqAA3G",
-      appleMusic: "",
+      appleMusic: "https://music.apple.com/es/album/noite-de-esmorga/6772612223",
+      youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_klswnuRhYMs4cZKHA2AQPYfUc_WLZeUdY",
+      amazonMusic: "https://music.amazon.es/albums/B0H2R92J3J",
       youtube: "",
       bandcamp: "",
     },
@@ -87,7 +91,9 @@ const albumEntries: Album[] = [
     },
     links: {
       spotify: "https://open.spotify.com/intl-es/album/6OVFWlrjaVwpGyeo7eHkgR",
-      appleMusic: "",
+      appleMusic: "https://music.apple.com/es/album/a-xente-non-cambia/6789898456",
+      youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_n7GM8Kk0OguQtYalUvjJu4J8-cYn3InwY",
+      amazonMusic: "https://music.amazon.es/albums/B0H8JN41ZV",
       youtube: "",
       bandcamp: "",
     },
