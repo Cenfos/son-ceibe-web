@@ -4,6 +4,7 @@ import { useState } from "react"
 import { ExternalLink, Music, Play, RotateCcw } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { albums, singles, type Album, type Single } from "@/lib/content"
+import { formatReleaseDate } from "@/lib/release-date"
 import { SpotifyEmbed } from "@/components/spotify-embed"
 
 export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "albums" }) {
@@ -66,7 +67,7 @@ function SingleCard({ single }: { single: Single }) {
   ].filter((p) => p.url)
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+    <article id={single.id} className="scroll-mt-24 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
       {/* Imagen arriba, centrada y con tamaño máximo */}
       <div className="relative mx-auto max-w-sm overflow-hidden">
         <img
@@ -90,6 +91,7 @@ function SingleCard({ single }: { single: Single }) {
         <p className="mx-auto mt-3 max-w-md text-pretty text-base leading-relaxed text-muted-foreground">
           {single.description[lang]}
         </p>
+        <time dateTime={single.releaseDate} className="mt-3 block text-sm text-muted-foreground">{formatReleaseDate(single.releaseDate, lang)}</time>
 
         {single.tracklist && single.tracklist.length > 0 && (
           <div className="mx-auto mt-6 max-w-md">
@@ -160,7 +162,7 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
   const currentImage = showBack && album.backCover ? album.backCover : album.cover
 
   return (
-    <article className="grid items-start gap-8 md:grid-cols-2 md:gap-12">
+    <article id={album.id} className="scroll-mt-24 grid items-start gap-8 md:grid-cols-2 md:gap-12">
       {/* Carátula */}
       <div className={reversed ? "md:order-2" : ""}>
         <div className="group relative overflow-hidden rounded-2xl border border-border shadow-sm">

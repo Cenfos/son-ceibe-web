@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useLanguage } from "@/components/language-provider"
 import { Play } from "lucide-react"
 
 type SpotifyEmbedProps = {
@@ -9,6 +10,7 @@ type SpotifyEmbedProps = {
 }
 
 export function SpotifyEmbed({ albumId, title }: SpotifyEmbedProps) {
+  const { lang } = useLanguage()
   const [open, setOpen] = useState(false)
   if (!albumId) return null
 
@@ -16,7 +18,7 @@ export function SpotifyEmbed({ albumId, title }: SpotifyEmbedProps) {
     return (
       <button type="button" onClick={() => setOpen(true)} className="flex min-h-16 w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
         <Play className="size-4 fill-current text-primary" />
-        Cargar reprodutor de Spotify · {title}
+        {lang === "gl" ? "Escoitar en Spotify" : "Escuchar en Spotify"} · {title}
       </button>
     )
   }

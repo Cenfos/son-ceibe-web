@@ -14,6 +14,7 @@ export type Album = {
   id: string
   title: string
   year: string
+  releaseDate: string // ISO YYYY-MM-DD; fecha oficial de publicación
   spotifyAlbumId: string
   cover: string
   backCover?: string
@@ -27,9 +28,10 @@ export type Album = {
   }
 }
 
-export const albums: Album[] = [
+const albumEntries: Album[] = [
   {
     id: "disco-1",
+    releaseDate: "2026-05-23",
     title: "Noite de Esmorga",
     year: "2026",
     spotifyAlbumId: "70dEjVgVVoffxFh2EqAA3G",
@@ -61,6 +63,7 @@ export const albums: Album[] = [
   },
   {
     id: "disco-2",
+    releaseDate: "2026-07-12",
     title: "A Xente non Cambia!",
     year: "2026",
     spotifyAlbumId: "6OVFWlrjaVwpGyeo7eHkgR",
@@ -99,6 +102,7 @@ export type Single = {
   id: string
   title: string
   year: string
+  releaseDate: string // ISO YYYY-MM-DD; fecha oficial de publicación
   spotifyAlbumId: string
   cover: string
   tracklist?: string[]
@@ -111,9 +115,46 @@ export type Single = {
   }
 }
 
-export const singles: Single[] = [
+const singleEntries: Single[] = [
+{
+  "id": "single-6",
+  "title": "Desta terra foi a voz",
+  "releaseDate": "2026-10-17",
+  "year": "2026",
+  "spotifyAlbumId": "2GJUUKrdWsTjewldBE58dK",
+  "cover": "/albums/desta-terra-foi-a-voz.jpg",
+  "tracklist": [
+    "Desta terra foi a voz"
+  ],
+  "description": {
+    "gl": "Single de Son Ceibe publicado o 17 de outubro de 2026. Xa dispoñible en Spotify.",
+    "es": "Single de Son Ceibe publicado el 17 de octubre de 2026. Ya disponible en Spotify."
+  },
+  "links": {
+    "spotify": "https://open.spotify.com/intl-es/album/2GJUUKrdWsTjewldBE58dK"
+  }
+},
+{
+  "id": "single-5",
+  "title": "No puzle da vida!",
+  "releaseDate": "2026-10-10",
+  "year": "2026",
+  "spotifyAlbumId": "4rowfcO6ABGT6U5kiBSSjt",
+  "cover": "/albums/no-puzle-da-vida.jpg",
+  "tracklist": [
+    "No puzle da vida!"
+  ],
+  "description": {
+    "gl": "Single de Son Ceibe publicado o 10 de outubro de 2026. Xa dispoñible en Spotify.",
+    "es": "Single de Son Ceibe publicado el 10 de octubre de 2026. Ya disponible en Spotify."
+  },
+  "links": {
+    "spotify": "https://open.spotify.com/intl-es/album/4rowfcO6ABGT6U5kiBSSjt"
+  }
+},
   {
     id: "single-4",
+    releaseDate: "2026-09-13",
     title: "As dúas Marías",
     year: "2026",
     spotifyAlbumId: "5B35ycmkjTikR6S2GppIEB",
@@ -132,6 +173,7 @@ export const singles: Single[] = [
   },
   {
     id: "single-1",
+    releaseDate: "2026-06-27",
     title: "As mulleres da Terra",
     year: "2026",
     spotifyAlbumId: "5HCsU499k7lw9F1Jvcf8bV",
@@ -150,6 +192,7 @@ export const singles: Single[] = [
   },
   {
     id: "single-2",
+    releaseDate: "2026-07-25",
     title: "Voa ceibe, ti gaivota",
     year: "2026",
     spotifyAlbumId: "3LQUfdcwwnVUx51MVOheQv",
@@ -168,6 +211,7 @@ export const singles: Single[] = [
   },
   {
     id: "single-3",
+    releaseDate: "2026-08-15",
     title: "A miña terra chama!",
     year: "2026",
     spotifyAlbumId: "48hyDXKXEDkj22TtJ5KNTX",
@@ -189,6 +233,18 @@ export const singles: Single[] = [
 // ----------------------------------------------------------------------------
 // VÍDEOS
 // ----------------------------------------------------------------------------
+
+// Mantener aquí solo lanzamientos publicados y con datos confirmados.
+// Al añadir un disco publicado con fecha más reciente, ocupará la novedad.
+const newestFirst = (a: { releaseDate: string }, b: { releaseDate: string }) =>
+  b.releaseDate.localeCompare(a.releaseDate)
+
+export const albums = [...albumEntries].sort(newestFirst)
+export const singles = [...singleEntries].sort(newestFirst)
+export const featuredRelease = [
+  ...albums.map(album => ({ ...album, kind: "album" as const })),
+  ...singles.map(single => ({ ...single, kind: "single" as const })),
+].sort(newestFirst)[0]
 
 export type Video = {
   id: string
@@ -247,9 +303,10 @@ export const t = {
   gl: {
     home: {
       single: "Novidade",
-      latest: "Últimos lanzamentos",
+      latest: "Últimos singles",
       allSingles: "Ver todos os singles",
       allAlbums: "Ver discografía",
+      viewAlbum: "Ver disco e cancións",
       lyricsTitle: "Letras e acordes",
       lyricsBody: "As letras das cancións de Son Ceibe, con acordes e partituras dispoñibles nalgúns temas.",
       allLyrics: "Ver todas as letras",
@@ -277,7 +334,7 @@ export const t = {
     hero: {
       tagline: "Folk galego en fusión",
       subtitle:
-        "Dous discos, catro singles, unha mesma raíz. Escoita a Son Ceibe onde queiras.",
+        "Cancións que nacen da nosa terra. Descubre os singles e discos de Son Ceibe.",
       listen: "Escoitar",
       discover: "Coñecer o grupo",
     },
@@ -348,9 +405,10 @@ export const t = {
   es: {
     home: {
       single: "Novedad",
-      latest: "Últimos lanzamientos",
+      latest: "Últimos singles",
       allSingles: "Ver todos los singles",
       allAlbums: "Ver discografía",
+      viewAlbum: "Ver disco y canciones",
       lyricsTitle: "Letras y acordes",
       lyricsBody: "Las letras de las canciones de Son Ceibe, con acordes y partituras disponibles en algunos temas.",
       allLyrics: "Ver todas las letras",
@@ -378,7 +436,7 @@ export const t = {
     hero: {
       tagline: "Folk gallego en fusión",
       subtitle:
-        "Dos discos, cuatro singles, una misma raíz. Escucha a Son Ceibe donde quieras.",
+        "Canciones que nacen de nuestra tierra. Descubre los singles y discos de Son Ceibe.",
       listen: "Escuchar",
       discover: "Conocer el grupo",
     },
