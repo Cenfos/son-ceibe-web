@@ -5,6 +5,7 @@ export const singlesLyrics: SongLyric[] = [
     title: "As mulleres da Terra",
     album: "A Xente non Cambia!",
     collections: ["A Xente non Cambia!", "Singles"],
+    lyricsFormat: "plain",
     hasChords: true,
     guitarGuide: {
       level: "Medio",
@@ -167,6 +168,7 @@ latexando o corazón.
   {
     title: "Voa ceibe, ti gaivota",
     album: "Singles",
+    lyricsFormat: "chorded",
     hasChords: true,
     guitarGuide: {
       level: "Medio",
@@ -312,6 +314,7 @@ G  D  G
   {
     title: "A miña terra chama!",
     album: "Singles",
+    lyricsFormat: "chorded",
     hasChords: true,
     guitarGuide: {
       level: "Medio",

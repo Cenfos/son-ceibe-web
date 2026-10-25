@@ -5,10 +5,10 @@ import { ChevronDown, Download, Guitar, Music } from "lucide-react"
 import { songLyrics, type SongLyric } from "@/lib/content"
 import { useLanguage } from "@/components/language-provider"
 
-const sectionPattern = /^(\[|\(|Estribillo|Verso|Estrofa|Chorus|Bridge|Puente|Intro|Outro|Final|Retrouso|Pre-estribillo|Letra con acordes)/i
+const sectionPattern = /^(?:\[|\(|(?:Estribillo|Verso|Estrofa|Chorus|Bridge|Puente|Intro|Outro|Final|Retrouso|Pre-estribillo)(?:\s+\d+)?\s*:?\s*$|Letra con acordes\b)/i
 const chordName = "(?:(?:[A-G]|Do|Re|Mi|Fa|Sol|La|Si)(?:#|b)?(?:m|maj|min|dim|aug|sus|add|7|9|5)?(?:\\/(?:[A-G]|Do|Re|Mi|Fa|Sol|La|Si)(?:#|b)?)?)"
 const chordLinePattern = new RegExp(`^\\s*(?:\\|?\\s*${chordName}\\s*(?:[-–|/,]\\s*)?)+(?:\\(?(?:x|X)\\d+\\)?)?\\s*$`, "i")
-const inlineChordPattern = new RegExp(`(^|\\s{2,})(?:\\((${chordName})\\)|(${chordName})(?=\\s|$))`, "g")
+const inlineChordPattern = new RegExp(`\\((${chordName})\\)|(^|\\s{2,})(${chordName})(?=\\s{2,}|$)`, "g")
 const namedChordsPattern = /^Acordes:\s*(.+)$/i
 
 function cleanLine(line: string) {
@@ -37,12 +37,12 @@ function splitInlineChords(line: string) {
   let found = false
 
   for (const match of line.matchAll(inlineChordPattern)) {
-    const prefix = match[1] ?? ""
-    const chord = match[2] ?? match[3]
+    const prefix = match[2] ?? ""
+    const chord = match[1] ?? match[3]
     if (!chord) continue
 
-    const start = (match.index ?? 0) + prefix.length
-    const tokenLength = match[2] ? chord.length + 2 : chord.length
+    const start = (match.index ?? 0) + (match[1] ? 0 : prefix.length)
+    const tokenLength = match[1] ? chord.length + 2 : chord.length
     chord.split("").forEach((character, offset) => { chordCharacters[start + offset] = character })
     for (let offset = 0; offset < tokenLength; offset += 1) lyricCharacters[start + offset] = " "
     found = true
@@ -55,7 +55,7 @@ function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character] ?? character)
 }
 
-function lyricBodyHtml(lyrics: string) {
+function lyricBodyHtml(lyrics: string, readChords = false) {
   const formatted: string[] = []
   let pendingChords: string | null = null
 
@@ -66,25 +66,25 @@ function lyricBodyHtml(lyrics: string) {
       if (!pendingChords) formatted.push('<div class="space"></div>')
       return
     }
-    const named = namedChords(clean)
+    const named = readChords ? namedChords(clean) : null
     if (named) {
       if (pendingChords) formatted.push(`<p class="chords">${escapeHtml(pendingChords)}</p>`)
       pendingChords = named
       return
     }
-    if (isChordLine(clean)) {
+    if (readChords && isChordLine(clean)) {
       if (pendingChords) formatted.push(`<p class="chords">${escapeHtml(pendingChords)}</p>`)
       pendingChords = clean
       return
     }
-    if (sectionPattern.test(clean.trim())) {
+    const inline = readChords && !pendingChords ? splitInlineChords(clean) : null
+    if (sectionPattern.test(clean.trim()) && !inline) {
       if (pendingChords) formatted.push(`<p class="chords">${escapeHtml(pendingChords)}</p>`)
       pendingChords = null
       formatted.push(`<p class="section">${content}</p>`)
       return
     }
 
-    const inline = pendingChords ? null : splitInlineChords(clean)
     if (pendingChords || inline) {
       formatted.push(`<div class="chord-verse"><p class="chords">${escapeHtml(pendingChords ?? inline?.chords ?? "")}</p><p class="line">${escapeHtml(inline?.lyrics ?? clean)}</p></div>`)
       pendingChords = null
@@ -114,7 +114,7 @@ function lyricDocument(title: string, collection: string, songs: SongLyric[]) {
     <section class="lyric">
       <h2>${escapeHtml(song.title)}</h2>
       <p class="collection">${escapeHtml(displayCollection(song.album))}</p>
-      <div class="lyrics">${lyricBodyHtml(song.lyrics)}</div>
+      <div class="lyrics${song.lyricsFormat === "chorded" ? " lyrics-chorded" : ""}">${lyricBodyHtml(song.lyrics, song.lyricsFormat === "chorded")}</div>
       ${guitarGuideHtml(song)}
     </section>
   `).join("\n")
@@ -141,6 +141,7 @@ function lyricDocument(title: string, collection: string, songs: SongLyric[]) {
     .lyrics { margin-top: 28px; }
     .line { margin: 0 0 8px; color: #111811; font-size: 18px; line-height: 1.65; }
     .chords { margin: 14px 0 3px; color: #624b1c; font: 700 14px/1.4 "Courier New", monospace; letter-spacing: .04em; }
+    .lyrics-chorded .line { font-family: "Courier New", monospace; }
     .chord-verse { margin: 0 0 8px; font-family: "Courier New", monospace; }
     .chord-verse .chords { margin: 0; white-space: pre; }
     .chord-verse .line { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 18px/1.65 "Courier New", monospace; }
@@ -201,7 +202,7 @@ function openPrintDocument(title: string, collection: string, songs: SongLyric[]
   printableWindow.focus()
 }
 
-function formatLyrics(lyrics: string) {
+function formatLyrics(lyrics: string, readChords = false) {
   const formatted: ReactNode[] = []
   let pendingChords: string | null = null
 
@@ -212,27 +213,27 @@ function formatLyrics(lyrics: string) {
       return
     }
 
-    const named = namedChords(clean)
+    const named = readChords ? namedChords(clean) : null
     if (named) {
       if (pendingChords) formatted.push(<p key={`chords-${index}`} className="font-mono text-sm font-bold tracking-wide text-[#624b1c]">{pendingChords}</p>)
       pendingChords = named
       return
     }
 
-    if (isChordLine(clean)) {
+    if (readChords && isChordLine(clean)) {
       if (pendingChords) formatted.push(<p key={`chords-${index}`} className="font-mono text-sm font-bold tracking-wide text-[#624b1c]">{pendingChords}</p>)
       pendingChords = clean
       return
     }
 
-    if (sectionPattern.test(clean.trim())) {
+    const inline = readChords && !pendingChords ? splitInlineChords(clean) : null
+    if (sectionPattern.test(clean.trim()) && !inline) {
       if (pendingChords) formatted.push(<p key={`chords-${index}`} className="font-mono text-sm font-bold tracking-wide text-[#624b1c]">{pendingChords}</p>)
       pendingChords = null
       formatted.push(<p key={`section-${index}`} className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#624b1c]">{clean}</p>)
       return
     }
 
-    const inline = pendingChords ? null : splitInlineChords(clean)
     if (pendingChords || inline) {
       formatted.push(
         <div key={`verse-${index}`} className="font-mono text-base leading-7">
@@ -244,14 +245,14 @@ function formatLyrics(lyrics: string) {
       return
     }
 
-    formatted.push(<p key={`line-${index}`} className="text-base leading-7 text-[#101610]">{clean}</p>)
+    formatted.push(<p key={`line-${index}`} className={`${readChords ? "font-mono " : ""}text-base leading-7 text-[#101610]`}>{clean}</p>)
   })
 
   if (pendingChords) formatted.push(<p key="chords-final" className="font-mono text-sm font-bold tracking-wide text-[#624b1c]">{pendingChords}</p>)
   return formatted
 }
 
-export function LyricsSection() {
+export function LyricsSection({ songs = songLyrics }: { songs?: SongLyric[] }) {
   const { tr } = useLanguage()
   const [openSong, setOpenSong] = useState<string | null>(null)
   const [filterAlbum, setFilterAlbum] = useState("all")
@@ -259,11 +260,11 @@ export function LyricsSection() {
 
   const collections = useMemo(() => {
     const grouped = new Map<string, SongLyric[]>()
-    songLyrics.forEach((song) => songCollections(song).forEach((collection) => grouped.set(collection, [...(grouped.get(collection) ?? []), song])))
+    songs.forEach((song) => songCollections(song).forEach((collection) => grouped.set(collection, [...(grouped.get(collection) ?? []), song])))
     return Array.from(grouped.entries())
-  }, [])
+  }, [songs])
 
-  const filteredSongs = useMemo(() => songLyrics.filter((song) => (filterAlbum === "all" || songCollections(song).includes(filterAlbum)) && song.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())), [filterAlbum, search])
+  const filteredSongs = useMemo(() => songs.filter((song) => (filterAlbum === "all" || songCollections(song).includes(filterAlbum)) && song.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())), [songs, filterAlbum, search])
 
   return (
     <section id="lyrics" className="scroll-mt-16 bg-secondary py-20 md:py-28">
@@ -317,7 +318,7 @@ export function LyricsSection() {
                         <h3 className="font-serif text-3xl font-semibold text-[#101610]">{song.title}</h3>
                         <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-[#4f5d4c]">{displayCollection(song.album)}</p>
                       </header>
-                      <div className="space-y-1 py-7">{formatLyrics(song.lyrics)}</div>
+                      <div className="space-y-1 py-7">{formatLyrics(song.lyrics, song.lyricsFormat === "chorded")}</div>
                       {song.guitarGuide && (
                         <aside className="mb-7 rounded-lg border border-[#aebda6] bg-[#f7f4eb]/80 p-5 text-[#101610]">
                           <div className="mb-4 flex items-center gap-2 font-semibold"><Guitar className="size-4 text-[#624b1c]" />Acordes para guitarra clásica · nivel {song.guitarGuide.level.toLowerCase()}</div>

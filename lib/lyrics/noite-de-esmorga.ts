@@ -4,6 +4,7 @@ export const noiteDeEsmorgaLyrics: SongLyric[] = [
   {
     title: "O home da Terra e o vento",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `Do/ Do7-Fa/ Fam-Do/ La7-Rem/ Sol7-Do
 
@@ -146,6 +147,7 @@ quen te puidera voltar.`,
   {
     title: "Prefiro perder na taberna",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `(na taberna)
 
@@ -279,6 +281,7 @@ Quen de aquí quere volver???? Am/Re7/G`,
   {
     title: "Cando Ourense ardía",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `!
 
@@ -372,6 +375,7 @@ volvo unha e outra vez!`,
   {
     title: "Antes pobre que calado",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `”
 
@@ -535,6 +539,7 @@ nunca deixes de bailar!`,
   {
     title: "Cancioneiro Fake",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `C   F   C   G
 
@@ -685,6 +690,7 @@ nada lle ten que envexar!`,
   {
     title: "Foi un bico",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `Am                         F
 
@@ -875,6 +881,7 @@ daquel bico de esperanza.`,
   {
     title: "Din que hai festa din que hai viño",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `!
 
@@ -1162,6 +1169,7 @@ aquí está o meu fogar!!!!
   {
     title: "Na mesa das lembranzas",
     album: "Noite de Esmorga",
+    lyricsFormat: "plain",
     hasChords: false,
     lyrics: `!
 
@@ -1315,6 +1323,7 @@ que nos deron algún día!
   {
     title: "Sakura no vento",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `Lam-SOL /FA-MI
 
@@ -1479,6 +1488,7 @@ FA-DO-SOL
   {
     title: "Toda a terra no cantar",
     album: "Noite de Esmorga",
+    lyricsFormat: "plain",
     hasChords: false,
     lyrics: `"
 
@@ -1638,6 +1648,7 @@ Ergue o vaso, brinda xa:
   {
     title: "O pobre cinchador",
     album: "Noite de Esmorga",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `(Cantiga / Introdución)
 

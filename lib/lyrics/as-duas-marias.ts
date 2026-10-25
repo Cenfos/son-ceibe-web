@@ -5,6 +5,7 @@ export const asDuasMariasLyrics: SongLyric[] = [
     title: "As dúas Marías",
     album: "Singles",
     collections: ["Singles"],
+    lyricsFormat: "plain",
     hasChords: false,
     lyrics: `Dúas sombras pola rúa,
 dous silencios ao pasar.

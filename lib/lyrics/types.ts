@@ -12,6 +12,8 @@ export type SongLyric = {
   collections?: string[]
   lyrics: string
   hasChords: boolean
+  // A guitar guide alone does not mean the lyric text contains chord notation.
+  lyricsFormat?: "plain" | "chorded"
   guitarGuide?: GuitarGuide
 }
 

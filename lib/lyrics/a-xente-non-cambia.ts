@@ -4,6 +4,7 @@ export const aXenteNonCambiaLyrics: SongLyric[] = [
   {
     title: "Amor dun día",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `G             D
 
@@ -230,6 +231,7 @@ pegadas no corazón.
   {
     title: "Cousas do Demo",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `| G | D | Em | C |
 
@@ -426,6 +428,7 @@ aprendemos a xogar!
   {
     title: "Cuncas de lume",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `(Intro - Am - G - F - E  (x2)
 
@@ -610,6 +613,7 @@ porque esta noite… só hai que queimar.
   {
     title: "Marcos da Leira",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `**\\\\[INTRO]**
 
@@ -800,6 +804,7 @@ Para cada marco un dono hai.
   {
     title: "As mulleres da Terra",
     album: "A xente non cambia",
+    lyricsFormat: "plain",
     hasChords: false,
     lyrics: `Nacín coa forza do vento
 
@@ -950,6 +955,7 @@ latexando o corazón.
   {
     title: "Latexo Peregrino",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `INTRO
 
@@ -1175,6 +1181,7 @@ FINAL
   {
     title: "Tatuaxes na Memoria",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `\\\\[Intro]  Am  F  C  G (x2)
 
@@ -1363,6 +1370,7 @@ Am                 F        Am
   {
     title: "Sen pedir nada por nada",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `\\\\### **Letra con Acordes**
 
@@ -1599,6 +1607,7 @@ o pouco que había compartían.
   {
     title: "Os dous do bote",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `(Ritmo folk rock enérgico)
 
@@ -1735,6 +1744,7 @@ D                       (parada)      G
   {
     title: "Nos teus ollos",
     album: "A xente non cambia",
+    lyricsFormat: "chorded",
     hasChords: true,
     lyrics: `(G) (D) (Em) (C) (x2)
 
