@@ -2,7 +2,7 @@
 
 import { type ReactNode, useMemo, useState } from "react"
 import { ChevronDown, Download, Guitar, Music } from "lucide-react"
-import { songLyrics, type SongLyric } from "@/lib/content"
+import { songLyrics, type SongLyric } from "@/lib/lyrics"
 import { LyricsPdfButton } from "@/components/lyrics-pdf-button"
 import { useLanguage } from "@/components/language-provider"
 

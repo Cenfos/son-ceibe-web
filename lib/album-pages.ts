@@ -1,4 +1,5 @@
-import { albums, songLyrics, type Album } from "@/lib/content"
+import { albums, type Album } from "@/lib/content"
+import { songLyrics } from "@/lib/lyrics"
 
 import { albumSlug } from "@/lib/album-path"
 export { albumPath, albumSlug } from "@/lib/album-path"

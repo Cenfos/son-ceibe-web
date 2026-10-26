@@ -300,7 +300,7 @@ export const socials = {
 // LETRAS DE CANCIONES
 // ----------------------------------------------------------------------------
 export type { SongLyric } from "./lyrics/types"
-export { songLyrics } from "./lyrics"
+// Lyric text lives in lib/lyrics and is loaded separately from general site content.
 
 // ----------------------------------------------------------------------------
 // TRADUCCIONES
@@ -338,9 +338,9 @@ export const t = {
       contact: "Contacto",
     },
     hero: {
-      tagline: "Folk galego en fusión",
+      tagline: "Folk rock galego en fusión",
       subtitle:
-        "Cancións que nacen da nosa terra. Descubre os singles e discos de Son Ceibe.",
+        "Cancións que nacen da nosa terra.\nDescubre os singles e discos de Son Ceibe.",
       listen: "Escoitar",
       discover: "Coñecer o grupo",
     },
@@ -440,9 +440,9 @@ export const t = {
       contact: "Contacto",
     },
     hero: {
-      tagline: "Folk gallego en fusión",
+      tagline: "Folk rock gallego en fusión",
       subtitle:
-        "Canciones que nacen de nuestra tierra. Descubre los singles y discos de Son Ceibe.",
+        "Canciones que nacen de nuestra tierra.\nDescubre los singles y discos de Son Ceibe.",
       listen: "Escuchar",
       discover: "Conocer el grupo",
     },

@@ -1,5 +1,6 @@
 "use client"
 
+import { SpotifyAutoplayEmbed } from "@/components/spotify-autoplay-embed"
 import { useEffect, useId, useRef, useState } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { ExternalLink, Maximize2, Minimize2, Play, X } from "lucide-react"
@@ -7,9 +8,11 @@ import { ExternalLink, Maximize2, Minimize2, Play, X } from "lucide-react"
 type SpotifyEmbedProps = {
   albumId: string
   title: string
+  autoPlay?: boolean
+  heroButtonLabel?: string
 }
 
-export function SpotifyEmbed({ albumId, title }: SpotifyEmbedProps) {
+export function SpotifyEmbed({ albumId, title, autoPlay = false, heroButtonLabel }: SpotifyEmbedProps) {
   const { lang } = useLanguage()
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState(false)
@@ -31,9 +34,9 @@ export function SpotifyEmbed({ albumId, title }: SpotifyEmbedProps) {
   }
 
   return <>
-    <button type="button" onClick={openPlayer} aria-haspopup="dialog" className="flex min-h-16 w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
-      <Play className="size-4 shrink-0 fill-current text-primary" aria-hidden="true" />
-      {lang === "gl" ? "Escoitar en Spotify" : "Escuchar en Spotify"} · {title}
+    <button type="button" onClick={openPlayer} aria-haspopup="dialog" aria-label={heroButtonLabel ? heroButtonLabel + " · " + title : undefined} className={heroButtonLabel ? "relative mx-auto inline-flex min-h-12 min-w-40 items-center justify-center rounded-full bg-primary px-12 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90" : "flex min-h-16 w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"}>
+      <Play className={heroButtonLabel ? "absolute left-5 top-1/2 size-4 -translate-y-1/2 fill-current text-primary-foreground" : "size-4 shrink-0 fill-current text-primary"} aria-hidden="true" />
+      {heroButtonLabel ?? ((lang === "gl" ? "Escoitar en Spotify" : "Escuchar en Spotify") + " · " + title)}
     </button>
 
     <dialog ref={dialogRef} aria-labelledby={headingId} onClose={() => { setOpen(false); setExpanded(false) }} onClick={event => { if (event.target === event.currentTarget) event.currentTarget.close() }} className={`fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none overflow-hidden border-0 bg-background p-0 text-foreground shadow-2xl backdrop:bg-black/75 open:flex open:flex-col ${expanded ? "" : "sm:m-auto sm:h-[min(88dvh,850px)] sm:w-[min(960px,calc(100vw-3rem))] sm:rounded-2xl sm:border sm:border-border"}`}>
@@ -48,7 +51,7 @@ export function SpotifyEmbed({ albumId, title }: SpotifyEmbedProps) {
         </div>
       </header>
       <div className="min-h-0 flex-1 bg-[#121212]">
-        {open && <iframe title={`Reproductor de Spotify: ${title}`} src={`https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`} width="100%" height="100%" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowFullScreen className="block h-full w-full border-0" />}
+        {open && (autoPlay ? <SpotifyAutoplayEmbed albumId={albumId} title={title} /> : <iframe title={`Reproductor de Spotify: ${title}`} src={`https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`} width="100%" height="100%" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowFullScreen className="block h-full w-full border-0" />)}
       </div>
       <footer className="shrink-0 border-t border-border px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] text-right sm:px-6">
         <a href={`https://open.spotify.com/album/${albumId}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Abrir en Spotify<ExternalLink className="size-4" aria-hidden="true" /></a>

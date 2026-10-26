@@ -1,3 +1,4 @@
+import { publishedSingleUpdates } from "./published-single-updates"
 import type { SongLyric } from "./types"
 import { aXenteNonCambiaLyrics } from "./a-xente-non-cambia"
 import { noiteDeEsmorgaLyrics } from "./noite-de-esmorga"
@@ -6,7 +7,7 @@ import { asDuasMariasLyrics } from "./as-duas-marias"
 
 export type { GuitarGuide, SongLyric } from "./types"
 
-const allLyrics = [...asDuasMariasLyrics, ...singlesLyrics, ...noiteDeEsmorgaLyrics, ...aXenteNonCambiaLyrics]
+const allLyrics = [...publishedSingleUpdates, ...asDuasMariasLyrics, ...singlesLyrics, ...noiteDeEsmorgaLyrics, ...aXenteNonCambiaLyrics]
 
 // Una canción puede pertenecer a un single y también a un disco. Se conserva
 // una única ficha para evitar duplicados al mostrar o imprimir todas las letras.
