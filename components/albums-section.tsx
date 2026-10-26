@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+import { albumPath } from "@/lib/album-path"
 import { useState } from "react"
 import { ExternalLink, Music, Play, RotateCcw } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
@@ -235,6 +237,7 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
             {tr.music.comingSoon}
           </div>
         )}
+        <Link href={albumPath(album)} className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">{tr.home.viewAlbum}</Link>
       </div>
     </article>
   )

@@ -1,5 +1,6 @@
 "use client"
 
+import { albumPath } from "@/lib/album-path"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Music2, Users } from "lucide-react"
@@ -54,16 +55,16 @@ export function HomeHighlights() {
         </div>
         <div className="grid gap-8 sm:grid-cols-2">
           {albums.slice(0, 2).map(album => <article key={album.id} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-            <Link href={`/albums#${album.id}`} className="group block" aria-label={album.title}>
+            <Link href={albumPath(album)} className="group block" aria-label={album.title}>
               <Image src={album.cover} alt={album.title} width={640} height={640} sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 560px" className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
             </Link>
             <div className="p-6 md:p-8">
               <time dateTime={album.releaseDate} className="text-sm text-muted-foreground">{formatReleaseDate(album.releaseDate, lang)}</time>
-              <h3 className="mt-2 font-serif text-2xl font-semibold md:text-3xl"><Link href={`/albums#${album.id}`} className="hover:underline">{album.title}</Link></h3>
+              <h3 className="mt-2 font-serif text-2xl font-semibold md:text-3xl"><Link href={albumPath(album)} className="hover:underline">{album.title}</Link></h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{album.description[lang]}</p>
               <div className="mt-6"><SpotifyEmbed albumId={album.spotifyAlbumId} title={album.title} /></div>
               <div className="mt-4"><AlbumPlatformLinks album={album} /></div>
-              <Link href={`/albums#${album.id}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">{tr.home.viewAlbum}<ArrowRight className="size-4" /></Link>
+              <Link href={albumPath(album)} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">{tr.home.viewAlbum}<ArrowRight className="size-4" /></Link>
             </div>
           </article>)}
 

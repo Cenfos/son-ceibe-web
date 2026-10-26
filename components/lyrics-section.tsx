@@ -3,6 +3,7 @@
 import { type ReactNode, useMemo, useState } from "react"
 import { ChevronDown, Download, Guitar, Music } from "lucide-react"
 import { songLyrics, type SongLyric } from "@/lib/content"
+import { LyricsPdfButton } from "@/components/lyrics-pdf-button"
 import { useLanguage } from "@/components/language-provider"
 
 const sectionPattern = /^(?:\[|\(|(?:Estribillo|Verso|Estrofa|Chorus|Bridge|Puente|Intro|Outro|Final|Retrouso|Pre-estribillo)(?:\s+\d+)?\s*:?\s*$|Letra con acordes\b)/i
@@ -252,6 +253,19 @@ function formatLyrics(lyrics: string, readChords = false) {
   return formatted
 }
 
+export function SongLyricsBody({ song }: { song: SongLyric }) {
+  return <>
+    <div className="space-y-1">{formatLyrics(song.lyrics, song.lyricsFormat === "chorded")}</div>
+    {song.guitarGuide && <aside className="mt-7 rounded-lg border border-[#aebda6] bg-[#f7f4eb] p-5 text-[#101610]">
+      <h4 className="mb-3 font-semibold">Acordes para guitarra · {song.guitarGuide.level}</h4>
+      <p className="text-sm"><strong>Tonalidad:</strong> {song.guitarGuide.key}</p>
+      {song.guitarGuide.capo && <p className="mt-1 text-sm"><strong>Cejilla:</strong> {song.guitarGuide.capo}</p>}
+      <p className="mt-1 text-sm"><strong>Ritmo:</strong> {song.guitarGuide.rhythm}</p>
+      <div className="mt-4 space-y-3">{song.guitarGuide.sections.map(section => <div key={section.title}><p className="text-xs font-bold uppercase tracking-wide text-[#624b1c]">{section.title}</p><p className="mt-1 whitespace-pre-wrap font-mono text-sm">{section.chords}</p></div>)}</div>
+    </aside>}
+  </>
+}
+
 export function LyricsSection({ songs = songLyrics }: { songs?: SongLyric[] }) {
   const { tr } = useLanguage()
   const [openSong, setOpenSong] = useState<string | null>(null)
@@ -288,7 +302,8 @@ export function LyricsSection({ songs = songLyrics }: { songs?: SongLyric[] }) {
           <input id="lyric-search" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar canción…" className="mx-auto block w-full max-w-md rounded-full border border-border bg-card px-5 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-accent focus:ring-1 focus:ring-accent" />
         </div>
 
-        <div className="mb-8 flex justify-center">
+        <div className="mb-8 flex flex-wrap justify-center gap-3">
+          <LyricsPdfButton songs={filteredSongs} title={filterAlbum === "all" ? "Son Ceibe" : filterAlbum} collection />
           <button onClick={() => openPrintDocument(filterAlbum === "all" ? tr.lyrics.downloadAll : filterAlbum, filterAlbum === "all" ? "Son Ceibe" : filterAlbum, filteredSongs)} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
             <Download className="size-4" />
             {filterAlbum === "all" ? tr.lyrics.downloadAll : `${tr.lyrics.downloadCollection}: ${filterAlbum}`}
@@ -332,7 +347,8 @@ export function LyricsSection({ songs = songLyrics }: { songs?: SongLyric[] }) {
                         <p className="font-semibold text-[#101610]">Son Ceibe</p>
                         <a className="hover:text-black" href="https://www.sonceibe.es" target="_blank" rel="noreferrer">www.sonceibe.es</a><span className="mx-2">·</span><a className="hover:text-black" href="https://www.instagram.com/sonceibebanda/" target="_blank" rel="noreferrer">Instagram @sonceibebanda</a>
                       </footer>
-                      <div className="mt-6 flex justify-center">
+                      <div className="mt-6 flex flex-wrap justify-center gap-3">
+                        <LyricsPdfButton songs={[song]} title={song.title} />
                         <button onClick={() => openPrintDocument(song.title, displayCollection(song.album), [song])} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"><Download className="size-4" />{tr.lyrics.download}</button>
                       </div>
                     </div>
