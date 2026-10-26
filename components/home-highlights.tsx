@@ -3,7 +3,7 @@
 import { albumPath } from "@/lib/album-path"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Music2, Users } from "lucide-react"
+import { ArrowRight, Music2, Compass } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { formatReleaseDate } from "@/lib/release-date"
 import { AlbumPlatformLinks } from "@/components/album-platform-links"
@@ -77,10 +77,20 @@ export function HomeHighlights() {
         <Link href="/letras" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">{tr.home.allLyrics}<ArrowRight className="size-4" /></Link>
       </div>
     </section>
-    <section className="bg-background py-16">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 md:flex-row md:items-center md:px-6">
-        <div className="max-w-2xl"><h2 className="font-serif text-3xl font-semibold">{tr.home.introTitle}</h2><p className="mt-3 text-muted-foreground">{tr.home.introBody}</p></div>
-        <Link href="/grupo" className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold hover:bg-secondary"><Users className="size-4" />{tr.nav.about}</Link>
+    <section className="bg-background px-4 py-16 md:px-6 md:py-20">
+      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-border bg-card md:grid-cols-[0.85fr_1.15fr]">
+        <div className="relative min-h-64 md:min-h-96">
+          <Image src="/hero-costa-galega-v2.webp" alt={lang === "gl" ? "Mar, rochas e vexetación na costa galega" : "Mar, rocas y vegetación en la costa gallega"} fill sizes="(max-width: 768px) 100vw, 480px" className="object-cover object-left" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent" />
+          <p className="absolute bottom-6 left-6 right-6 font-serif text-2xl text-white md:bottom-8 md:left-8">{lang === "gl" ? "Unha terra. Moitas historias." : "Una tierra. Muchas historias."}</p>
+        </div>
+        <div className="flex flex-col items-start justify-center p-7 sm:p-10 md:p-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{lang === "gl" ? "O universo de Son Ceibe" : "El universo de Son Ceibe"}</p>
+          <h2 className="mt-4 text-balance font-serif text-3xl font-semibold md:text-4xl">{tr.home.introTitle}</h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{tr.home.introBody}</p>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{lang === "gl" ? "Un proxecto musical de Camilo Rodríguez. Cancións en galego para contar o que somos e o que sentimos." : "Un proyecto musical de Camilo Rodríguez. Canciones en gallego para contar lo que somos y lo que sentimos."}</p>
+          <Link href="/grupo" className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90"><Compass className="size-4" aria-hidden="true" />{tr.hero.discover}<ArrowRight className="size-4" aria-hidden="true" /></Link>
+        </div>
       </div>
     </section>
   </>

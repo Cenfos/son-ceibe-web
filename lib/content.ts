@@ -86,8 +86,8 @@ const albumEntries: Album[] = [
       "Nos teus ollos...",
     ],
     description: {
-      gl: "A evolución do grupo: máis fusión, máis forza e as mesmas raíces de sempre.",
-      es: "La evolución del grupo: más fusión, más fuerza y las mismas raíces de siempre.",
+      gl: "A evolución do proxecto: máis fusión, máis forza e as mesmas raíces de sempre.",
+      es: "La evolución del proyecto: más fusión, más fuerza y las mismas raíces de siempre.",
     },
     links: {
       spotify: "https://open.spotify.com/intl-es/album/6OVFWlrjaVwpGyeo7eHkgR",
@@ -321,7 +321,7 @@ export const t = {
       watch: "Ver en YouTube",
       viewVideos: "Ver vídeos",
       introTitle: "Raíces galegas, enerxía de rock",
-      introBody: "Son Ceibe mestura música de raíz e sons contemporáneos. Descubre os discos publicados, as letras e a historia do grupo.",
+      introBody: "Son Ceibe mestura música de raíz e sons contemporáneos. Descubre os discos publicados, as letras e a historia do proxecto.",
       albums: "discos publicados",
       singles: "singles publicados",
       exploreMusic: "Explorar toda a música",
@@ -331,7 +331,7 @@ export const t = {
       singles: "Singles",
       albums: "Álbums",
       music: "Música",
-      about: "O grupo",
+      about: "O proxecto",
       shop: "Tenda",
       lyrics: "Letras",
       videos: "Vídeos",
@@ -342,7 +342,7 @@ export const t = {
       subtitle:
         "Cancións que nacen da nosa terra.\nDescubre os singles e discos de Son Ceibe.",
       listen: "Escoitar",
-      discover: "Coñecer o grupo",
+      discover: "Coñecer o proxecto",
     },
     music: {
       title: "Os nosos discos",
@@ -357,11 +357,11 @@ export const t = {
       viewBack: "Ver contraportada",
     },
     about: {
-      title: "O grupo",
+      title: "O proxecto",
       paragraphs: [
-        "Son Ceibe é un proxecto musical galego que nace co obxectivo de tender unha ponte entre o pasado e o presente da nosa cultura. Cun estilo firmemente asentado no Folk Rock, a súa música fusiona a forza e a maxia dos instrumentos tradicionais galegos coa enerxía, as guitarras e a contundencia do rock moderno.",
-        "Máis alá das etiquetas, Son Ceibe é un espazo de liberdade creativa onde se reivindica a música de raíz desde unha perspectiva actual. As súas composicións son un reflexo da identidade galega: nelas conviven a enerxía da festa e a verbena, a nostalxia, o respecto polos que viñeron antes e as vivencias do día a día que todos compartimos.",
-        "Cun pé no respecto absoluto pola nosa tradición e outro na potencia do rock contemporáneo, o proxecto busca conectar con públicos de todas as xeracións. Son Ceibe non é só un grupo de cancións; é unha homenaxe á cultura popular, unha celebración da amizade e unha viaxe musical pensada para sentirse, cantarse e bailarse con orgullo.",
+        "Son Ceibe é o proxecto musical de Camilo Rodríguez, compositor das cancións. Un lugar onde a lingua galega e a música de raíz se atopan coa enerxía do rock, do folk e de moitos outros estilos musicais que van labrando o son, sempre coa liberdade de probar cousas novas.",
+        "Moitas das cancións nacen de cousas vividas; outras, de cousas sentidas. Falan dos momentos da vida que o tempo vai levando, das lembranzas que quedan e dun futuro incerto, sempre coa ilusión de agardar con alegría un novo día.",
+        "Cada disco abre un novo capítulo deste camiño. Aquí podes descubrir as cancións, ler as súas letras e achegarte ao universo de Son Ceibe, ao teu ritmo.",
       ],
     },
     contact: {
@@ -423,7 +423,7 @@ export const t = {
       watch: "Ver en YouTube",
       viewVideos: "Ver vídeos",
       introTitle: "Raíces gallegas, energía de rock",
-      introBody: "Son Ceibe mezcla música de raíz y sonidos contemporáneos. Descubre los discos publicados, las letras y la historia del grupo.",
+      introBody: "Son Ceibe mezcla música de raíz y sonidos contemporáneos. Descubre los discos publicados, las letras y la historia del proyecto.",
       albums: "discos publicados",
       singles: "singles publicados",
       exploreMusic: "Explorar toda la música",
@@ -433,7 +433,7 @@ export const t = {
       singles: "Singles",
       albums: "Álbumes",
       music: "Música",
-      about: "El grupo",
+      about: "El proyecto",
       shop: "Tienda",
       lyrics: "Letras",
       videos: "Vídeos",
@@ -444,7 +444,7 @@ export const t = {
       subtitle:
         "Canciones que nacen de nuestra tierra.\nDescubre los singles y discos de Son Ceibe.",
       listen: "Escuchar",
-      discover: "Conocer el grupo",
+      discover: "Conocer el proyecto",
     },
     music: {
       title: "Nuestros discos",
@@ -459,11 +459,11 @@ export const t = {
       viewBack: "Ver contraportada",
     },
     about: {
-      title: "El grupo",
+      title: "El proyecto",
       paragraphs: [
-        "Son Ceibe es un proyecto musical gallego que nace con el objetivo de tender un puente entre el pasado y el presente de nuestra cultura. Con un estilo firmemente asentado en el Folk Rock, su música fusiona la fuerza y la magia de los instrumentos tradicionales gallegos con la energía, las guitarras y la contundencia del rock moderno.",
-        "Más allá de las etiquetas, Son Ceibe es un espacio de libertad creativa donde se reivindica la música de raíz desde una perspectiva actual. Sus composiciones son un reflejo de la identidad gallega: en ellas conviven la energía de la fiesta y la verbena, la nostalgia, el respeto por los que vinieron antes y las vivencias del día a día que todos compartimos.",
-        "Con un pie en el respeto absoluto por nuestra tradición y otro en la potencia del rock contemporáneo, el proyecto busca conectar con públicos de todas las generaciones. Son Ceibe no es solo un grupo de canciones; es un homenaje a la cultura popular, una celebración de la amistad y un viaje musical pensado para sentirse, cantarse y bailarse con orgullo.",
+        "Son Ceibe es el proyecto musical de Camilo Rodríguez, compositor de las canciones. Un lugar donde la lengua gallega y la música de raíz se encuentran con la energía del rock, del folk y de muchos otros estilos musicales que van labrando el sonido, siempre con la libertad de probar cosas nuevas.",
+        "Muchas de las canciones nacen de cosas vividas; otras, de cosas sentidas. Hablan de los momentos de la vida que el tiempo se va llevando, de los recuerdos que quedan y de un futuro incierto, siempre con la ilusión de esperar con alegría un nuevo día.",
+        "Cada disco abre un nuevo capítulo de este camino. Aquí puedes descubrir las canciones, leer sus letras y acercarte al universo de Son Ceibe, a tu ritmo.",
       ],
     },
     contact: {
