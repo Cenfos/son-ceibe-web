@@ -18,7 +18,7 @@ export function SiteHeader() {
     { href: "/videos", label: tr.nav.videos },
     { href: "/letras", label: tr.nav.lyrics },
     { href: "/grupo", label: tr.nav.about },
-    ...(pathname === "/" ? [{ href: "https://sonceibe-studio.vercel.app/", label: "Studio" }] : []),
+    ...(pathname === "/" ? [{ href: "/studio", label: "Studio" }] : []),
   ]
 
   return (
@@ -43,16 +43,16 @@ export function SiteHeader() {
 
         {/* Navegación desktop */}
         <nav className="hidden items-center gap-3 lg:gap-5 md:flex" aria-label="Principal">
-          {links.map((link) => (
-            <Link
+          {links.map((link) => { const NavLink = link.href === "/studio" ? "a" : Link; return (
+            <NavLink
               key={link.href}
               href={link.href}
               aria-current={pathname === link.href ? "page" : undefined}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </Link>
-          ))}
+            </NavLink>
+          ); })}
         </nav>
 
         {/* Derecha: idioma + menú móvil */}
@@ -98,8 +98,8 @@ export function SiteHeader() {
       {mobileOpen && (
         <div className="absolute right-2 top-full mt-2 w-56 rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-md md:hidden">
           <nav id="mobile-navigation" className="flex flex-col px-2 py-2" aria-label="Móbil">
-            {links.map((link) => (
-              <Link
+            {links.map((link) => { const NavLink = link.href === "/studio" ? "a" : Link; return (
+              <NavLink
                 key={link.href}
                 href={link.href}
               aria-current={pathname === link.href ? "page" : undefined}
@@ -107,8 +107,8 @@ export function SiteHeader() {
                 className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 {link.label}
-              </Link>
-            ))}
+              </NavLink>
+            ); })}
           </nav>
         </div>
       )}
