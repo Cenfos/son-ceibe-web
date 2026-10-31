@@ -4,7 +4,8 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        { source: "/studio/:path*", destination: "https://sonceibe-studio.vercel.app/studio/:path*" },
+        { source: "/studio", destination: "https://sonceibe-studio.vercel.app/studio" },
+        { source: "/studio/:path+", destination: "https://sonceibe-studio.vercel.app/studio/:path*" },
       ],
     }
   },
