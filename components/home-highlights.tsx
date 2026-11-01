@@ -8,6 +8,7 @@ import { useLanguage } from "@/components/language-provider"
 import { formatReleaseDate } from "@/lib/release-date"
 import { AlbumPlatformLinks } from "@/components/album-platform-links"
 import { SpotifyEmbed } from "@/components/spotify-embed"
+import { AlbumStoreLinks } from "@/components/album-store-links"
 import { albums, singles, featuredRelease } from "@/lib/content"
 
 export function HomeHighlights() {
@@ -27,6 +28,7 @@ export function HomeHighlights() {
           <time dateTime={release.releaseDate} className="mt-3 block text-sm text-muted-foreground">{formatReleaseDate(release.releaseDate, lang)}</time>
           <div className="mt-6 flex flex-wrap gap-4">
             {release.links.spotify && <a href={release.links.spotify} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90"><Music2 className="size-4" />{tr.home.listenSpotify}</a>}
+            {release.kind === "album" && <AlbumStoreLinks album={release} />}
             {release.kind === "album" && !release.links.spotify && release.links.youtubeMusic && <a href={release.links.youtubeMusic} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 font-semibold text-primary-foreground hover:opacity-90"><Music2 className="size-4" />{lang === "gl" ? "Escoitar en YouTube Music" : "Escuchar en YouTube Music"}</a>}
             {release.kind === "album" && <Link href={albumPath(release)} className="inline-flex items-center gap-2 font-semibold text-primary hover:underline">{tr.home.viewAlbum}<ArrowRight className="size-4" /></Link>}
             <Link href={releasePath} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">{releaseLinkLabel}<ArrowRight className="size-4" /></Link>
