@@ -61,6 +61,8 @@ const albumEntries: Album[] = [
   },
   "links": {
     "spotify": "https://open.spotify.com/intl-es/album/0bsveHqTwTGFvdIeRfDpPn",
+    "amazonMusic": "https://music.amazon.es/albums/B0HPCS11C4",
+    "appleMusic": "https://music.apple.com/es/album/a-saber-o-que-v%C3%A9n/6827283121",
     "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_mDDRTEPXeFKEEhUjBPlWEeBF-i5wrIF_M"
   }
 },
