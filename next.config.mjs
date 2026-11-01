@@ -7,6 +7,10 @@ const nextConfig = {
     return {
       beforeFiles: [
         {
+          source: '/studio',
+          destination: 'https://sonceibe-studio.vercel.app/studio',
+        },
+        {
           source: '/studio/:path*',
           destination: 'https://sonceibe-studio.vercel.app/studio/:path*',
         },
