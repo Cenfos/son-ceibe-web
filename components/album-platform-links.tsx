@@ -1,9 +1,11 @@
 "use client"
 
 import { ExternalLink } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 import type { Album } from "@/lib/content"
 
 export function AlbumPlatformLinks({ album, includeSpotify = false }: { album: Album; includeSpotify?: boolean }) {
+  const { lang } = useLanguage()
   const platforms = [
     { label: "Spotify", url: includeSpotify ? album.links.spotify : undefined },
     { label: "YouTube Music", url: album.links.youtubeMusic },
@@ -18,5 +20,6 @@ export function AlbumPlatformLinks({ album, includeSpotify = false }: { album: A
     {platforms.map(platform => <a key={platform.label} href={platform.url} target="_blank" rel="noopener noreferrer" aria-label={`${platform.label} · ${album.title}`} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-2 text-xs font-medium text-foreground transition-colors hover:bg-secondary">
       <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />{platform.label}
     </a>)}
+    {!album.links.spotify && <p className="w-full text-sm text-muted-foreground">{lang === "gl" ? "Spotify · Ligazón pendente" : "Spotify · Enlace pendiente"}</p>}
   </div>
 }

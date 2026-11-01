@@ -3,7 +3,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { HeroSection } from "@/components/hero-section"
 import { HomeHighlights } from "@/components/home-highlights"
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
       <SiteHeader />

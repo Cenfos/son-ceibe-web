@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { albumPath } from "@/lib/album-path"
 import { useState } from "react"
-import { ExternalLink, Music, Play, RotateCcw } from "lucide-react"
+import { ExternalLink, Music, RotateCcw } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { albums, singles, type Album, type Single } from "@/lib/content"
 import { formatReleaseDate } from "@/lib/release-date"
@@ -200,6 +200,8 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
           {album.description[lang]}
         </p>
 
+        <time dateTime={album.releaseDate} className="mt-3 block text-sm text-muted-foreground">{formatReleaseDate(album.releaseDate, lang)}</time>
+
         {album.tracklist && album.tracklist.length > 0 && (
           <div className="mt-8">
             <h4 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
@@ -231,12 +233,7 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
           <div className="mt-8">
             <SpotifyEmbed albumId={album.spotifyAlbumId} title={album.title} />
           </div>
-        ) : (
-          <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
-            <Play className="size-4" aria-hidden="true" />
-            {tr.music.comingSoon}
-          </div>
-        )}
+        ) : null}
         <Link href={albumPath(album)} className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">{tr.home.viewAlbum}</Link>
       </div>
     </article>

@@ -6,7 +6,7 @@ import { albums } from "@/lib/content"
 import { SpotifyEmbed } from "@/components/spotify-embed"
 
 export function HeroSection() {
-  const { tr } = useLanguage()
+  const { tr, lang } = useLanguage()
 
   return (
     <section
@@ -46,7 +46,7 @@ export function HeroSection() {
           {tr.hero.subtitle}
         </p>
 
-        {albums[0] && <div className="mx-auto mt-9 max-w-xs"><SpotifyEmbed albumId={albums[0].spotifyAlbumId} title={albums[0].title} autoPlay heroButtonLabel={tr.hero.listen} /></div>}
+        {albums[0] && <div className="mx-auto mt-9 max-w-xs">{albums[0].spotifyAlbumId ? <SpotifyEmbed albumId={albums[0].spotifyAlbumId} title={albums[0].title} autoPlay heroButtonLabel={tr.hero.listen} /> : albums[0].links.youtubeMusic ? <a href={albums[0].links.youtubeMusic} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">{lang === "gl" ? "Escoitar en YouTube Music" : "Escuchar en YouTube Music"}</a> : null}</div>}
 
       </div>
     </section>

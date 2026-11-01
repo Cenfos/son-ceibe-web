@@ -15,7 +15,7 @@ export type Album = {
   title: string
   year: string
   releaseDate: string // ISO YYYY-MM-DD; fecha oficial de publicación
-  spotifyAlbumId: string
+  spotifyAlbumId?: string
   cover: string
   backCover?: string
   tracklist?: string[]
@@ -31,6 +31,37 @@ export type Album = {
 }
 
 const albumEntries: Album[] = [
+{
+  "id": "disco-3",
+  "releaseDate": "2026-11-01",
+  "title": "A saber o que vén",
+  "year": "2026",
+  "cover": "/albums/a-saber-o-que-ven-front.jpg",
+  "backCover": "/albums/a-saber-o-que-ven-back.jpg",
+  "tracklist": [
+    "No puzle da vida",
+    "A miña terra chama",
+    "Amores cegos",
+    "As dúas Marías",
+    "Desta terra foi a voz",
+    "A esmorga os levou",
+    "A saber o que vén!",
+    "Fíos de amor",
+    "Amor dun neno",
+    "Me están a fartar",
+    "Máis ti non o queres ver",
+    "Onde o ceo bica o mar",
+    "A catro patas!",
+    "Aquí que non quede nada!"
+  ],
+  "description": {
+    "gl": "Catorce cancións para volver ás raíces, celebrar a vida e cantar o que levamos dentro. A terra, o amor, a memoria e a festa atopan a súa voz no novo disco de Son Ceibe.",
+    "es": "Catorce canciones para volver a las raíces, celebrar la vida y cantar lo que llevamos dentro. La tierra, el amor, la memoria y la fiesta encuentran su voz en el nuevo disco de Son Ceibe."
+  },
+  "links": {
+    "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_mDDRTEPXeFKEEhUjBPlWEeBF-i5wrIF_M"
+  }
+},
   {
     id: "disco-1",
     releaseDate: "2026-05-23",

@@ -6,7 +6,7 @@ import { useLanguage } from "@/components/language-provider"
 import { ExternalLink, Maximize2, Minimize2, Play, X } from "lucide-react"
 
 type SpotifyEmbedProps = {
-  albumId: string
+  albumId?: string
   title: string
   autoPlay?: boolean
   heroButtonLabel?: string
