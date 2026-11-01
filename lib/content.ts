@@ -33,6 +33,7 @@ export type Album = {
 const albumEntries: Album[] = [
 {
   "id": "disco-3",
+  "spotifyAlbumId": "0bsveHqTwTGFvdIeRfDpPn",
   "releaseDate": "2026-11-01",
   "title": "A saber o que vén",
   "year": "2026",
@@ -59,6 +60,7 @@ const albumEntries: Album[] = [
     "es": "Catorce canciones para volver a las raíces, celebrar la vida y cantar lo que llevamos dentro. La tierra, el amor, la memoria y la fiesta encuentran su voz en el nuevo disco de Son Ceibe."
   },
   "links": {
+    "spotify": "https://open.spotify.com/intl-es/album/0bsveHqTwTGFvdIeRfDpPn",
     "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_mDDRTEPXeFKEEhUjBPlWEeBF-i5wrIF_M"
   }
 },
