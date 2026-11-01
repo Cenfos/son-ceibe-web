@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { albumPath } from "@/lib/album-path"
-import { useState } from "react"
+import { useState, type CSSProperties } from "react"
 import { ExternalLink, Music, RotateCcw } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { albums, singles, type Album, type Single } from "@/lib/content"
@@ -49,8 +49,8 @@ export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "al
         </div>
 
         <div className="flex flex-col gap-16">
-          {albums.map((album, index) => (
-            <AlbumCard key={album.id} album={album} reversed={index % 2 === 1} />
+          {albums.map((album) => (
+            <AlbumCard key={album.id} album={album} />
           ))}
         </div>
         </>}
@@ -150,7 +150,7 @@ function SingleCard({ single }: { single: Single }) {
   )
 }
 
-function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
+function AlbumCard({ album }: { album: Album }) {
   const { lang, tr } = useLanguage()
   const [showBack, setShowBack] = useState(false)
 
@@ -158,9 +158,9 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
   const currentImage = showBack && album.backCover ? album.backCover : album.cover
 
   return (
-    <article id={album.id} className="scroll-mt-24 grid items-start gap-8 md:grid-cols-2 md:gap-12">
+    <article id={album.id} className="scroll-mt-24 grid items-center gap-8 border-b border-border pb-14 last:border-b-0 last:pb-0 md:grid-cols-2 md:gap-x-12">
       {/* Carátula */}
-      <div className={reversed ? "md:order-2" : ""}>
+      <div>
         <div className="group relative overflow-hidden rounded-2xl border border-border shadow-sm">
           <img
             src={currentImage || "/placeholder.svg"}
@@ -192,7 +192,7 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
       </div>
 
       {/* Info */}
-      <div className={reversed ? "md:order-1" : ""}>
+      <div>
         <h3 className="font-serif text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           {album.title}
         </h3>
@@ -202,27 +202,7 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
 
         <time dateTime={album.releaseDate} className="mt-3 block text-sm text-muted-foreground">{formatReleaseDate(album.releaseDate, lang)}</time>
 
-        {album.tracklist && album.tracklist.length > 0 && (
-          <div className="mt-8">
-            <h4 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              <Music className="size-3.5" />
-              {tr.music.tracklist}
-            </h4>
-            <ol className="space-y-2">
-              {album.tracklist.map((track, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-3 text-sm text-foreground"
-                >
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-[10px] font-semibold text-secondary-foreground">
-                    {i + 1}
-                  </span>
-                  {track}
-                </li>
-              ))}
-            </ol>
-          </div>
-        )}
+
 
         <div className="mt-8">
           <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{tr.music.platforms}</h4>
@@ -236,6 +216,27 @@ function AlbumCard({ album, reversed }: { album: Album; reversed: boolean }) {
         ) : null}
         <Link href={albumPath(album)} className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">{tr.home.viewAlbum}</Link>
       </div>
+        {album.tracklist && album.tracklist.length > 0 && (
+          <div className="md:col-span-2">
+            <h4 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              <Music className="size-3.5" />
+              {tr.music.tracklist}
+            </h4>
+            <ol style={{ "--track-rows": Math.ceil(album.tracklist.length / 2) } as CSSProperties} className="grid grid-cols-1 gap-x-12 md:grid-cols-2 md:grid-flow-col md:grid-rows-[repeat(var(--track-rows),auto)]">
+              {album.tracklist.map((track, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-3 border-b border-border py-3 text-sm text-foreground"
+                >
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-[10px] font-semibold text-secondary-foreground">
+                    {i + 1}
+                  </span>
+                  {track}
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
     </article>
   )
 }
