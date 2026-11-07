@@ -1,12 +1,13 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { LanguageProvider } from '@/components/language-provider'
+import { siteDescription, siteTitle, siteUrl } from '@/lib/site'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Son Ceibe · Folk galego en fusión',
-  description:
-    'Web oficial de Son Ceibe. Escoita a música publicada, consulta as letras e coñece o grupo. Folk galego en fusión.',
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
   icons: {
     icon: '/son-ceibe-logo.webp',
     apple: '/son-ceibe-logo.webp',
