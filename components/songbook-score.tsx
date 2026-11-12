@@ -108,7 +108,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
   const content = useRef<HTMLDivElement>(null)
   const headingId = useId()
   const score = songbookScores[id]
-  const wideVerses = id === "tatuaxes-na-memoria"
+  const wideVerses = id === "tatuaxes-na-memoria" || id === "foi-un-bico"
 
   useLayoutEffect(() => {
     if (!expanded || !dialog.current || !viewport.current || !content.current) return

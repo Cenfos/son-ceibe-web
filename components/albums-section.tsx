@@ -3,15 +3,18 @@
 import Link from "next/link"
 import { albumPath } from "@/lib/album-path"
 import { useState, type CSSProperties } from "react"
-import { ExternalLink, Music, RotateCcw } from "lucide-react"
+import { Download, ExternalLink, Music, RotateCcw } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { albums, singles, type Album, type Single } from "@/lib/content"
 import { formatReleaseDate } from "@/lib/release-date"
 import { AlbumPlatformLinks } from "@/components/album-platform-links"
 import { SpotifyEmbed } from "@/components/spotify-embed"
+import { SongbookScore } from "@/components/songbook-score"
+import { lyricSlug, songbookAlbumPdf, songbookSongPdf } from "@/lib/songbook-downloads"
 
 export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "albums" }) {
-  const { tr } = useLanguage()
+  const { lang, tr } = useLanguage()
+  const singlesPdf = mode === "singles" ? songbookAlbumPdf("singles") : undefined
   const AlbumHeading = mode === "all" ? "h2" : "h1"
 
   return (
@@ -26,11 +29,17 @@ export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "al
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
               {tr.music.singlesSubtitle}
             </p>
+            {singlesPdf && (
+              <a href={singlesPdf} download className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90">
+                <Download className="size-4" aria-hidden="true" />
+                {lang === "gl" ? "Descargar cancioneiro de singles (PDF)" : "Descargar cancionero de singles (PDF)"}
+              </a>
+            )}
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {singles.map((single) => (
-              <SingleCard key={single.id} single={single} />
+              <SingleCard key={single.id} single={single} showSongbook={mode === "singles"} />
             ))}
           </div>
         </div>
@@ -59,8 +68,10 @@ export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "al
   )
 }
 
-function SingleCard({ single }: { single: Single }) {
+function SingleCard({ single, showSongbook }: { single: Single; showSongbook: boolean }) {
   const { lang, tr } = useLanguage()
+  const songId = lyricSlug(single.title)
+  const pdf = showSongbook ? songbookSongPdf(songId) : undefined
 
   const platforms = [
     { key: "spotify", label: "Spotify", url: single.links.spotify },
@@ -70,7 +81,7 @@ function SingleCard({ single }: { single: Single }) {
   ].filter((p) => p.url)
 
   return (
-    <article id={single.id} className="scroll-mt-24 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+    <article id={single.id} className={`min-w-0 scroll-mt-24 overflow-hidden rounded-2xl border border-border bg-card shadow-sm ${pdf ? "md:has-[details[open]]:col-span-2" : ""}`}>
       {/* Imagen arriba, centrada y con tamaño máximo */}
       <div className="relative mx-auto max-w-sm overflow-hidden">
         <img
@@ -144,6 +155,20 @@ function SingleCard({ single }: { single: Single }) {
           <div className="mx-auto mt-6 max-w-lg">
             <SpotifyEmbed albumId={single.spotifyAlbumId} title={single.title} />
           </div>
+        )}
+        {pdf && (
+          <details className="mt-6 rounded-xl border border-border text-left">
+            <summary className="cursor-pointer px-4 py-3 text-sm font-semibold">
+              {lang === "gl" ? "Ver letra con acordes" : "Ver letra con acordes"}
+            </summary>
+            <div className="rounded-b-xl bg-[#eff5eb] p-4 text-[#101610] sm:p-6">
+              <a href={pdf} download className="mb-4 inline-flex items-center gap-2 text-sm font-semibold hover:underline">
+                <Download className="size-4" aria-hidden="true" />
+                {lang === "gl" ? "Descargar letra con acordes (PDF)" : "Descargar letra con acordes (PDF)"}
+              </a>
+              <SongbookScore id={songId} title={single.title} />
+            </div>
+          </details>
         )}
       </div>
     </article>

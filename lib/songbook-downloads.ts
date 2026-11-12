@@ -27,6 +27,20 @@ const songbookSongs: Record<string, string[]> = {
     "os-dous-do-bote",
     "nos-teus-ollos",
   ],
+  "noite-de-esmorga": [
+    "o-home-da-terra-e-o-vento",
+    "prefiro-perder-na-taberna",
+    "cando-ourense-ardia",
+    "antes-pobre-que-calado",
+    "cancioneiro-fake",
+    "foi-un-bico",
+    "din-que-hai-festa-din-que-hai-vino",
+    "na-mesa-das-lembranzas",
+    "sakura-no-vento",
+    "toda-a-terra-no-cantar",
+    "o-pobre-cinchador",
+  ],
+  singles: ["voa-ceibe-ti-gaivota"],
 }
 
 export function lyricSlug(title: string) {
