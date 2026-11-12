@@ -16,7 +16,7 @@ type Score = {
 const songbookScores: Record<string, Score> = scores as Record<string, Score>
 const chordClass = "font-mono font-bold text-[#a51620]"
 
-function ScoreContent({ score }: { score: Score }) {
+function ScoreContent({ score, compact = false }: { score: Score; compact?: boolean }) {
   return (
     <div className="space-y-[0.85em] text-[#101610]">
       <div className="rounded-lg border border-[#aebda6] bg-white/60 px-[0.8em] py-[0.5em] text-[0.92em] leading-tight">
@@ -30,10 +30,10 @@ function ScoreContent({ score }: { score: Score }) {
       </div>
       <div className="gap-9 md:columns-2">
         {score.sections.map(({ title, lines }, index) => (
-          <section key={index} className="mb-[0.75em] break-inside-avoid">
+          <section key={index} className={compact ? "mb-[0.55em] break-inside-avoid leading-[1.05]" : "mb-[0.75em] break-inside-avoid"}>
             <h4 className="mb-[0.15em] font-bold">{title}</h4>
             {lines.map(({ text, kind, chords }, lineIndex) => (
-              <div key={lineIndex} className="leading-[1.24]">
+              <div key={lineIndex} className={compact ? "leading-[1.08]" : "leading-[1.24]"}>
                 {chords && (
                   <p className={`whitespace-pre text-[0.9em] ${chordClass}`}>
                     {chords.map(([offset, chord], i) => {
@@ -52,7 +52,7 @@ function ScoreContent({ score }: { score: Score }) {
   )
 }
 
-const minSize = 10
+const minSize = 9
 const maxSize = 22
 const defaultSize = 15
 const controlClass = "inline-flex min-h-9 items-center gap-2 rounded-full border border-[#aebda6] bg-white px-3 text-sm font-semibold text-[#101610] hover:bg-[#e3ecdd]"
@@ -137,7 +137,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
             </header>
             <div ref={viewport} className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
               <div ref={content} style={{ fontSize: size }} className="px-4 py-3 sm:px-6">
-                <ScoreContent score={score} />
+                <ScoreContent score={score} compact />
               </div>
             </div>
           </div>
