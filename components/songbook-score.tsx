@@ -17,8 +17,14 @@ const songbookScores: Record<string, Score> = scores as Record<string, Score>
 const chordClass = "font-mono font-bold text-[#a51620]"
 
 function ScoreContent({ score, compact = false }: { score: Score; compact?: boolean }) {
+  const rowCount = score.sections.reduce(
+    (total, section) => total + 1 + section.lines.reduce((rows, line) => rows + (line.chords ? 2 : 1), 0),
+    0,
+  )
+  const wideColumns = rowCount >= 68 && score.sections.length >= 4 ? "@min-[65rem]/score:columns-4" : ""
+
   return (
-    <div className="space-y-[0.85em] text-[#101610]">
+    <div className="@container/score space-y-[0.85em] text-[#101610]">
       <div className="rounded-lg border border-[#aebda6] bg-white/60 px-[0.8em] py-[0.5em] text-[0.92em] leading-tight">
         {score.guide.map((line, index) => (
           <p key={index}>
@@ -28,7 +34,7 @@ function ScoreContent({ score, compact = false }: { score: Score; compact?: bool
           </p>
         ))}
       </div>
-      <div className="gap-9 md:columns-2">
+      <div className={`gap-6 @min-[38rem]/score:columns-2 @min-[46rem]/score:columns-3 ${wideColumns}`}>
         {score.sections.map(({ title, lines }, index) => (
           <section key={index} className={compact ? "mb-[0.55em] break-inside-avoid leading-[1.05]" : "mb-[0.75em] break-inside-avoid"}>
             <h4 className="mb-[0.15em] font-bold">{title}</h4>
@@ -54,11 +60,11 @@ function ScoreContent({ score, compact = false }: { score: Score; compact?: bool
 
 const minSize = 9
 const maxSize = 22
-const defaultSize = 15
+const defaultSize = 16
 const controlClass = "inline-flex min-h-9 items-center gap-2 rounded-full border border-[#aebda6] bg-white px-3 text-sm font-semibold text-[#101610] hover:bg-[#e3ecdd]"
 
 function fitScore(viewport: HTMLDivElement, content: HTMLDivElement) {
-  let size = defaultSize
+  let size = maxSize
   while (size > minSize) {
     content.style.fontSize = size + "px"
     if (content.offsetHeight <= viewport.clientHeight) return size
@@ -115,7 +121,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
         ref={dialog}
         aria-labelledby={headingId}
         onClose={() => setExpanded(false)}
-        className="fixed inset-0 m-auto h-[95dvh] max-h-none w-[96vw] max-w-[82rem] overflow-hidden rounded-xl border border-[#aebda6] bg-[#eff5eb] text-[#101610] shadow-2xl backdrop:bg-black/60"
+        className="fixed inset-0 m-auto h-[95dvh] max-h-none w-[96vw] max-w-[94rem] overflow-hidden rounded-xl border border-[#aebda6] bg-[#eff5eb] text-[#101610] shadow-2xl backdrop:bg-black/60"
       >
         {expanded && (
           <div className="flex h-full min-h-0 flex-col">
