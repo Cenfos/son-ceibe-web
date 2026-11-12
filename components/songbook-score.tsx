@@ -39,7 +39,28 @@ function ResponsiveChordLine({ chords, text }: { chords: [number, string][]; tex
   )
 }
 
-function ScoreContent({ score, compact = false, wideVerses = false }: { score: Score; compact?: boolean; wideVerses?: boolean }) {
+function WordAlignedChordLine({ chords, text }: { chords: [number, string][]; text: string }) {
+  const prefix = text.slice(0, chords[0][0])
+
+  return (
+    <div className="flex flex-wrap items-end gap-y-0.5">
+      {prefix && <span className="whitespace-pre-wrap">{prefix}</span>}
+      {chords.map(([offset, chord], index) => (
+        <span key={index} className="inline-flex max-w-full flex-col">
+          <span className={`text-[0.9em] ${chordClass}`}>{chord}</span>
+          <span className="whitespace-pre-wrap">{text.slice(offset, chords[index + 1]?.[0])}</span>
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function ScoreContent({ score, compact = false, wideVerses = false, alignWords = false }: {
+  score: Score
+  compact?: boolean
+  wideVerses?: boolean
+  alignWords?: boolean
+}) {
   const rowCount = score.sections.reduce(
     (total, section) => total + 1 + section.lines.reduce((rows, line) => rows + (line.chords ? 2 : 1), 0),
     0,
@@ -63,7 +84,9 @@ function ScoreContent({ score, compact = false, wideVerses = false }: { score: S
         {score.sections.map(({ title, lines }, index) => (
           <section key={index} className={compact ? "mb-[0.55em] break-inside-avoid leading-[1.05]" : "mb-[0.75em] break-inside-avoid"}>
             <h4 className="mb-[0.15em] font-bold">{title}</h4>
-            {lines.map(({ text, kind, chords }, lineIndex) => (
+            {lines.map(({ text, kind, chords }, lineIndex) => alignWords && chords?.length ? (
+              <WordAlignedChordLine key={lineIndex} chords={chords} text={text} />
+            ) : (
               <div key={lineIndex} className={compact ? "leading-[1.08]" : "leading-[1.24]"}>
                 {chords && (wideVerses ? <ResponsiveChordLine chords={chords} text={text} /> : (
                   <p className={`whitespace-pre text-[0.9em] ${chordClass}`}>
@@ -109,6 +132,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
   const headingId = useId()
   const score = songbookScores[id]
   const wideVerses = id === "tatuaxes-na-memoria" || id === "foi-un-bico"
+  const alignWords = id === "na-mesa-das-lembranzas" || id === "toda-a-terra-no-cantar"
 
   useLayoutEffect(() => {
     if (!expanded || !dialog.current || !viewport.current || !content.current) return
@@ -154,7 +178,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
         </button>
         <div className="ml-auto">{logo}</div>
       </div>
-      <div style={{ fontSize: size }}><ScoreContent score={score} wideVerses={wideVerses} /></div>
+      <div style={{ fontSize: size }}><ScoreContent score={score} wideVerses={wideVerses} alignWords={alignWords} /></div>
       <dialog
         ref={dialog}
         aria-labelledby={headingId}
@@ -182,7 +206,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
             </header>
             <div ref={viewport} className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
               <div ref={content} style={{ fontSize: size }} className="px-4 py-3 sm:px-6">
-                <ScoreContent score={score} compact wideVerses={wideVerses} />
+                <ScoreContent score={score} compact wideVerses={wideVerses} alignWords={alignWords} />
               </div>
             </div>
           </div>
