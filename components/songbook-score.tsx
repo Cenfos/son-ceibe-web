@@ -1,6 +1,7 @@
 "use client"
 
 import { useId, useLayoutEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { Maximize2, X } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import scores from "@/lib/songbook-scores.json"
@@ -107,6 +108,17 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
     </label>
   )
 
+  const logo = (
+    <Image
+      src="/cancioneiros/a-saber-o-que-ven/son-ceibe-agua.webp"
+      alt="Son Ceibe"
+      width={44}
+      height={44}
+      className="size-11 shrink-0 rounded-sm"
+      unoptimized
+    />
+  )
+
   return (
     <div>
       <div className="mb-3 flex flex-wrap items-center gap-3">
@@ -115,6 +127,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
           <Maximize2 className="size-4" aria-hidden="true" />
           {lang === "gl" ? "Vista ampla" : "Vista amplia"}
         </button>
+        <div className="ml-auto">{logo}</div>
       </div>
       <div style={{ fontSize: size }}><ScoreContent score={score} /></div>
       <dialog
@@ -140,6 +153,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
                 <X className="size-4" aria-hidden="true" />
                 {lang === "gl" ? "Pechar" : "Cerrar"}
               </button>
+              {logo}
             </header>
             <div ref={viewport} className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
               <div ref={content} style={{ fontSize: size }} className="px-4 py-3 sm:px-6">
