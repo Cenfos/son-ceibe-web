@@ -11,7 +11,7 @@ import { LyricsPdfButton } from "@/components/lyrics-pdf-button"
 import { SongbookScore } from "@/components/songbook-score"
 import { SongLyricsBody } from "@/components/song-lyrics-body"
 import { AlbumShare } from "@/components/album-share"
-import { lyricSlug, songbookAlbumId, songbookPdf, songbookSongPdf } from "@/lib/songbook-downloads"
+import { lyricSlug, songbookAlbumPdf, songbookSongPdf } from "@/lib/songbook-downloads"
 import { albumPath, albumSlug } from "@/lib/album-path"
 import { formatReleaseDate } from "@/lib/release-date"
 import type { Album, SongLyric } from "@/lib/content"
@@ -20,7 +20,8 @@ const downloadClass = "inline-flex items-center gap-2 rounded-full bg-primary px
 export function PublishedAlbumPage({ album, songs, otherAlbums }: { album: Album; songs: SongLyric[]; otherAlbums: Album[] }) {
   const { lang, tr } = useLanguage()
   const [showBack, setShowBack] = useState(false)
-  const hasSongbook = albumSlug(album) === songbookAlbumId
+  const songbookPdf = songbookAlbumPdf(albumSlug(album))
+  const hasSongbook = Boolean(songbookPdf)
   const displayingBack = showBack && Boolean(album.backCover)
   return <>
     <div className="mx-auto max-w-6xl px-4 pt-7 md:px-6"><Link href="/albums" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="size-4" />{lang === "gl" ? "Volver á discografía" : "Volver a la discografía"}</Link></div>
