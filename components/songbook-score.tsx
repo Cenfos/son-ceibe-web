@@ -1,3 +1,8 @@
+"use client"
+
+import { useId, useLayoutEffect, useRef, useState } from "react"
+import { Maximize2, X } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 import scores from "@/lib/songbook-scores.json"
 
 type Score = {
@@ -11,13 +16,10 @@ type Score = {
 const songbookScores: Record<string, Score> = scores as Record<string, Score>
 const chordClass = "font-mono font-bold text-[#a51620]"
 
-export function SongbookScore({ id }: { id: string }) {
-  const score = songbookScores[id]
-  if (!score) return null
-
+function ScoreContent({ score }: { score: Score }) {
   return (
-    <div className="space-y-6 text-[#101610]">
-      <div className="space-y-1 rounded-lg border border-[#aebda6] bg-white/60 p-4 text-sm">
+    <div className="space-y-[0.85em] text-[#101610]">
+      <div className="rounded-lg border border-[#aebda6] bg-white/60 px-[0.8em] py-[0.5em] text-[0.92em] leading-tight">
         {score.guide.map((line, index) => (
           <p key={index}>
             {line.map((part, position) => (
@@ -26,26 +28,121 @@ export function SongbookScore({ id }: { id: string }) {
           </p>
         ))}
       </div>
-      <div className="space-y-5">
+      <div className="gap-9 md:columns-2">
         {score.sections.map(({ title, lines }, index) => (
-          <section key={index}>
-            <h4 className="mb-1 text-sm font-bold">{title}</h4>
+          <section key={index} className="mb-[0.75em] break-inside-avoid">
+            <h4 className="mb-[0.15em] font-bold">{title}</h4>
             {lines.map(({ text, kind, chords }, lineIndex) => (
-              <div key={lineIndex} className="leading-relaxed">
+              <div key={lineIndex} className="leading-[1.24]">
                 {chords && (
-                  <p className={`whitespace-pre ${chordClass}`}>
+                  <p className={`whitespace-pre text-[0.9em] ${chordClass}`}>
                     {chords.map(([offset, chord], i) => {
                       const previous = chords[i - 1]
                       return " ".repeat(previous ? Math.max(1, offset - previous[0] - previous[1].length) : offset) + chord
                     }).join("")}
                   </p>
                 )}
-                <p className={kind === "sequence" ? chordClass : kind === "repeat" ? "text-sm italic" : undefined}>{text}</p>
+                <p className={kind === "sequence" ? chordClass : kind === "repeat" ? "text-[0.92em] italic" : undefined}>{text}</p>
               </div>
             ))}
           </section>
         ))}
       </div>
+    </div>
+  )
+}
+
+const minSize = 10
+const maxSize = 22
+const defaultSize = 15
+const controlClass = "inline-flex min-h-9 items-center gap-2 rounded-full border border-[#aebda6] bg-white px-3 text-sm font-semibold text-[#101610] hover:bg-[#e3ecdd]"
+
+function fitScore(viewport: HTMLDivElement, content: HTMLDivElement) {
+  let size = defaultSize
+  while (size > minSize) {
+    content.style.fontSize = size + "px"
+    if (content.offsetHeight <= viewport.clientHeight) return size
+    size--
+  }
+  content.style.fontSize = minSize + "px"
+  return minSize
+}
+
+export function SongbookScore({ id, title }: { id: string; title: string }) {
+  const { lang } = useLanguage()
+  const [size, setSize] = useState(defaultSize)
+  const [expanded, setExpanded] = useState(false)
+  const dialog = useRef<HTMLDialogElement>(null)
+  const viewport = useRef<HTMLDivElement>(null)
+  const content = useRef<HTMLDivElement>(null)
+  const headingId = useId()
+  const score = songbookScores[id]
+
+  useLayoutEffect(() => {
+    if (!expanded || !dialog.current || !viewport.current || !content.current) return
+    dialog.current.showModal()
+    const fitted = fitScore(viewport.current, content.current)
+    setSize(fitted)
+  }, [expanded])
+
+  if (!score) return null
+
+  const sizeControl = (
+    <label className="flex items-center gap-2 text-sm font-semibold">
+      {lang === "gl" ? "Tamaño do texto" : "Tamaño del texto"}
+      <input
+        type="range"
+        min={minSize}
+        max={maxSize}
+        value={size}
+        onChange={event => setSize(event.currentTarget.valueAsNumber)}
+        className="w-24 accent-[#a51620]"
+      />
+    </label>
+  )
+
+  return (
+    <div>
+      <div className="mb-3 flex flex-wrap items-center gap-3">
+        {sizeControl}
+        <button type="button" className={controlClass} onClick={() => setExpanded(true)}>
+          <Maximize2 className="size-4" aria-hidden="true" />
+          {lang === "gl" ? "Vista ampla" : "Vista amplia"}
+        </button>
+      </div>
+      <div style={{ fontSize: size }}><ScoreContent score={score} /></div>
+      <dialog
+        ref={dialog}
+        aria-labelledby={headingId}
+        onClose={() => setExpanded(false)}
+        className="fixed inset-0 m-auto h-[95dvh] max-h-none w-[96vw] max-w-[82rem] overflow-hidden rounded-xl border border-[#aebda6] bg-[#eff5eb] text-[#101610] shadow-2xl backdrop:bg-black/60"
+      >
+        {expanded && (
+          <div className="flex h-full min-h-0 flex-col">
+            <header className="flex shrink-0 flex-wrap items-center gap-3 border-b border-[#aebda6] px-4 py-2 sm:px-6">
+              <h3 id={headingId} className="mr-auto font-serif text-xl font-semibold">{title}</h3>
+              {sizeControl}
+              <button type="button" className={controlClass} onClick={() => {
+                if (viewport.current && content.current) {
+                  setSize(fitScore(viewport.current, content.current))
+                  viewport.current.scrollTop = 0
+                }
+              }}>
+                {lang === "gl" ? "Axustar á pantalla" : "Ajustar a la pantalla"}
+              </button>
+              <button type="button" className={controlClass} onClick={() => dialog.current?.close()}>
+                <X className="size-4" aria-hidden="true" />
+                {lang === "gl" ? "Pechar" : "Cerrar"}
+              </button>
+            </header>
+            <div ref={viewport} className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+              <div ref={content} style={{ fontSize: size }} className="px-4 py-3 sm:px-6">
+                <ScoreContent score={score} />
+              </div>
+            </div>
+          </div>
+        )}
+      </dialog>
     </div>
   )
 }
