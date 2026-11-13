@@ -18,7 +18,7 @@ export function AlbumsSection({ mode = "all" }: { mode?: "all" | "singles" | "al
   const AlbumHeading = mode === "all" ? "h2" : "h1"
 
   return (
-    <section id="music" className="scroll-mt-16 bg-background py-20 md:py-28">
+    <section id="music" className="music-surface scroll-mt-16 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         {/* Singles */}
         {mode !== "albums" && <div className={mode === "all" ? "mb-20" : ""}>
@@ -81,7 +81,7 @@ function SingleCard({ single, showSongbook }: { single: Single; showSongbook: bo
   ].filter((p) => p.url)
 
   return (
-    <article id={single.id} className={`min-w-0 scroll-mt-24 overflow-hidden rounded-2xl border border-border bg-card shadow-sm ${pdf ? "md:has-[details[open]]:col-span-2" : ""}`}>
+    <article id={single.id} className={`min-w-0 scroll-mt-24 overflow-hidden release-card rounded-2xl border shadow-sm ${pdf ? "md:has-[details[open]]:col-span-2" : ""}`}>
       {/* Imagen arriba, centrada y con tamaño máximo */}
       <div className="relative mx-auto max-w-sm overflow-hidden">
         <img
@@ -186,7 +186,7 @@ function AlbumCard({ album }: { album: Album }) {
     <article id={album.id} className="scroll-mt-24 grid items-center gap-8 border-b border-border pb-14 last:border-b-0 last:pb-0 md:grid-cols-2 md:gap-x-12">
       {/* Carátula */}
       <div>
-        <div className="group relative overflow-hidden rounded-2xl border border-border shadow-sm">
+        <div className="release-card group relative overflow-hidden rounded-2xl border shadow-sm">
           <img
             src={currentImage || "/placeholder.svg"}
             alt={
