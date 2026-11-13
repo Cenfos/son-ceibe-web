@@ -166,3 +166,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .music-surface {
+    background-color: light-dark(#f2ebdd, var(--background));
+  }
+
+  .release-card {
+    border-color: light-dark(#c9bba6, #57665b);
+    background-color: light-dark(#fffcf5, var(--card));
+  }
+
+  .release-feature {
+    border-color: light-dark(#c9bba6, #57665b);
+    border-top-color: light-dark(#b66d42, #d18a60);
+    background-color: light-dark(#fffcf5, var(--card));
+  }
+}
