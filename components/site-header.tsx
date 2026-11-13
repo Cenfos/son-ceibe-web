@@ -18,7 +18,7 @@ export function SiteHeader() {
     { href: "/videos", label: tr.nav.videos },
     { href: "/letras", label: tr.nav.lyrics },
     { href: "/grupo", label: tr.nav.about },
-    ...(pathname === "/" ? [{ href: "https://sonceibe-studio.vercel.app/", label: "Studio" }] : []),
+    ...(pathname === "/" ? [{ href: "/studio", label: "Studio" }] : []),
   ]
 
   return (
