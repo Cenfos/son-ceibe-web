@@ -18,8 +18,8 @@ export function HomeHighlights() {
   const releasePath = release?.kind === "album" ? "/albums" : "/singles"
   const releaseLinkLabel = release?.kind === "album" ? tr.home.allAlbums : tr.home.allSingles
   return <>
-    {release && <section className="bg-background py-16 md:py-20">
-      <article className="mx-auto grid max-w-6xl items-center gap-8 px-4 md:grid-cols-[280px_1fr] md:gap-12 md:px-6">
+    {release && <section className="music-surface px-4 py-16 md:px-6 md:py-20">
+      <article className="release-feature mx-auto grid max-w-6xl items-center gap-8 rounded-2xl border border-t-2 p-5 md:grid-cols-[280px_1fr] md:gap-12 md:p-8">
         <Image src={release.cover} alt={release.title} width={560} height={560} className="mx-auto w-full max-w-[280px] rounded-2xl object-cover shadow" />
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{release.kind === "album" ? (lang === "gl" ? "Novo disco · Xa dispoñible" : "Nuevo disco · Ya disponible") : tr.home.single}</p>
@@ -51,14 +51,14 @@ export function HomeHighlights() {
         </div>
       </div>
     </section>
-    <section className="bg-background py-16 md:py-20">
+    <section className="music-surface py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <h2 className="font-serif text-3xl font-semibold">{tr.music.title}</h2>
           <Link href="/albums" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">{tr.home.allAlbums}<ArrowRight className="size-4" /></Link>
         </div>
         <div className="grid gap-8 sm:grid-cols-2">
-          {albums.slice(0, 2).map(album => <article key={album.id} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+          {albums.slice(0, 2).map(album => <article key={album.id} className="overflow-hidden release-card rounded-2xl border shadow-sm">
             <Link href={albumPath(album)} className="group block" aria-label={album.title}>
               <Image src={album.cover} alt={album.title} width={640} height={640} sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 560px" className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
             </Link>
