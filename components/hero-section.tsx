@@ -24,7 +24,7 @@ export function HeroSection() {
           sizes="100vw"
           className="object-cover object-[80%_40%] md:object-[50%_40%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 via-40% to-transparent" />
       </div>
 
       {/* Contenido */}
@@ -40,10 +40,10 @@ export function HeroSection() {
           sizes="(max-width: 640px) 90vw, 580px"
           className="mx-auto h-auto w-full max-w-[580px] drop-shadow-[0_3px_3px_rgba(0,0,0,0.65)]"
         />
-        <p className="mt-4 text-xl font-medium tracking-wide text-accent sm:text-2xl">
+        <p className="mt-4 text-xl font-medium tracking-wide text-foreground sm:text-2xl">
           {tr.hero.tagline}
         </p>
-        <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line text-pretty text-lg leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line text-pretty text-lg leading-relaxed text-foreground">
           {tr.hero.subtitle}
         </p>
 
