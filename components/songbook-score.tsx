@@ -132,7 +132,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
   const headingId = useId()
   const score = songbookScores[id]
   const wideVerses = id === "tatuaxes-na-memoria" || id === "foi-un-bico"
-  const alignWords = id === "na-mesa-das-lembranzas" || id === "toda-a-terra-no-cantar"
+  const alignWords = id === "na-mesa-das-lembranzas" || id === "toda-a-terra-no-cantar" || id === "o-home-da-terra-e-o-vento"
 
   useLayoutEffect(() => {
     if (!expanded || !dialog.current || !viewport.current || !content.current) return
