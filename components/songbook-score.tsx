@@ -14,7 +14,7 @@ type Score = {
   }[]
 }
 
-const songbookScores: Record<string, Score> = scores as Record<string, Score>
+const songbookScores = scores as unknown as Record<string, Score>
 const chordClass = "font-mono font-bold text-[#a51620]"
 
 function ResponsiveChordLine({ chords, text }: { chords: [number, string][]; text: string }) {
