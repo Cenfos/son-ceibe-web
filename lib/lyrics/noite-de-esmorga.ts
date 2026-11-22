@@ -1534,7 +1534,7 @@ pero lévoo todo aquí!
 
 Ergue o vaso, brinda xa,
 
-por quen non puido quedar,
+por quen marcha a pelexar,
 
 que onde vaias vas levar…
 
