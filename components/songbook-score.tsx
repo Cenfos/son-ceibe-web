@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Maximize2, X } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import scores from "@/lib/songbook-scores.json"
+import noPuzleDaVida from "@/lib/songbook-score-no-puzle-da-vida.json"
 
 type Score = {
   guide: string[][]
@@ -14,7 +15,10 @@ type Score = {
   }[]
 }
 
-const songbookScores = scores as unknown as Record<string, Score>
+const songbookScores: Record<string, Score> = {
+  ...(scores as unknown as Record<string, Score>),
+  "no-puzle-da-vida": noPuzleDaVida as unknown as Score,
+}
 const chordClass = "font-mono font-bold text-[#a51620]"
 
 function ResponsiveChordLine({ chords, text }: { chords: [number, string][]; text: string }) {
