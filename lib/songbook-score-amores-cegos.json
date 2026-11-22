@@ -1,0 +1,661 @@
+{
+  "guide": [
+    [
+      "Acordes de acompañamento  ",
+      "Am · D · Bm · E · A · Em · B",
+      ""
+    ]
+  ],
+  "sections": [
+    {
+      "title": "Estrofa 1",
+      "lines": [
+        {
+          "text": "Foi fermosa aquela moza,",
+          "chords": [
+            [
+              0,
+              "Am"
+            ]
+          ]
+        },
+        {
+          "text": "foi ben boa e mala prea,",
+          "chords": [
+            [
+              8,
+              "D"
+            ],
+            [
+              19,
+              "Am"
+            ]
+          ]
+        },
+        {
+          "text": "agarimo sempre tiñas,"
+        },
+        {
+          "text": "dos teus berros fuxo axiña.",
+          "chords": [
+            [
+              9,
+              "Bm"
+            ],
+            [
+              22,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "Cantando a razón levabas,",
+          "chords": [
+            [
+              6,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "outras veces esquivabas,",
+          "chords": [
+            [
+              9,
+              "D"
+            ],
+            [
+              20,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "mais sexas moza ou vella,"
+        },
+        {
+          "text": "meu amor no peito albergas.",
+          "chords": [
+            [
+              5,
+              "Em"
+            ],
+            [
+              12,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Retrouso",
+      "lines": [
+        {
+          "text": "Era unha moza ben nova",
+          "chords": [
+            [
+              20,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "cando a súa vida cambiou,",
+          "chords": [
+            [
+              12,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "pois dun día para outro",
+          "chords": [
+            [
+              15,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "mocidade alí quedou.",
+          "chords": [
+            [
+              13,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "Nunca lle deixou ao demo",
+          "chords": [
+            [
+              17,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "que o sorriso lle quitara,",
+          "chords": [
+            [
+              21,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "aprendeu pronto na vida",
+          "chords": [
+            [
+              21,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "que os amores se partillan.",
+          "chords": [
+            [
+              23,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Estrofa 2",
+      "lines": [
+        {
+          "text": "Amor foi o dalgún día,"
+        },
+        {
+          "text": "amor cego nas caricias,",
+          "chords": [
+            [
+              7,
+              "D"
+            ],
+            [
+              18,
+              "Am"
+            ]
+          ]
+        },
+        {
+          "text": "pois o amor cego te lembra,"
+        },
+        {
+          "text": "non te esquece polas beiras.",
+          "chords": [
+            [
+              9,
+              "Bm"
+            ],
+            [
+              24,
+              "Em"
+            ]
+          ]
+        },
+        {
+          "text": "Amores que leva o tempo,",
+          "chords": [
+            [
+              7,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "outros duran un momento,",
+          "chords": [
+            [
+              7,
+              "D"
+            ],
+            [
+              21,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "mais sempre os amores cegos"
+        },
+        {
+          "text": "non se esquecen, ben me lembro!",
+          "chords": [
+            [
+              7,
+              "E"
+            ],
+            [
+              28,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Estrofa 3",
+      "lines": [
+        {
+          "text": "Son recordos, son lembranzas,"
+        },
+        {
+          "text": "son sorrisos, son andanzas,",
+          "chords": [
+            [
+              7,
+              "D"
+            ],
+            [
+              23,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "amores cegos que tiña,"
+        },
+        {
+          "text": "deses que cambian a vida.",
+          "chords": [
+            [
+              6,
+              "B"
+            ],
+            [
+              22,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "Pois aquela moza nova,",
+          "chords": [
+            [
+              6,
+              "Am"
+            ]
+          ]
+        },
+        {
+          "text": "cando a vida lle mudou,",
+          "chords": [
+            [
+              10,
+              "D"
+            ],
+            [
+              17,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "atrás quedou unha nena"
+        },
+        {
+          "text": "e outro amor nela medrou!",
+          "chords": [
+            [
+              9,
+              "Am"
+            ],
+            [
+              13,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Retrouso",
+      "lines": [
+        {
+          "text": "Era unha moza ben nova",
+          "chords": [
+            [
+              11,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "cando a súa vida cambiou,",
+          "chords": [
+            [
+              20,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "pois dun día para outro",
+          "chords": [
+            [
+              15,
+              "Em"
+            ]
+          ]
+        },
+        {
+          "text": "mocidade alí quedou.",
+          "chords": [
+            [
+              13,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "Nunca lle deixou ao demo",
+          "chords": [
+            [
+              17,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "que o sorriso lle quitara,",
+          "chords": [
+            [
+              18,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "aprendeu pronto na vida",
+          "chords": [
+            [
+              21,
+              "Em"
+            ]
+          ]
+        },
+        {
+          "text": "que os amores se partillan.",
+          "chords": [
+            [
+              23,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ponte",
+      "lines": [
+        {
+          "text": "Moitos foron os amores"
+        },
+        {
+          "text": "que xurdiron nesa vida,",
+          "chords": [
+            [
+              0,
+              "Am"
+            ],
+            [
+              18,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "tamén rotos polas dores,"
+        },
+        {
+          "text": "agochados nos temores.",
+          "chords": [
+            [
+              18,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "Mais eu lembro a túa mirada,",
+          "chords": [
+            [
+              5,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "forte, ceibe, ben marcada,",
+          "chords": [
+            [
+              7,
+              "D"
+            ],
+            [
+              23,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "non te esquezas, onde esteas,"
+        },
+        {
+          "text": "meu amor cego o levas.",
+          "chords": [
+            [
+              5,
+              "E"
+            ],
+            [
+              11,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Retrouso final",
+      "lines": [
+        {
+          "text": "Era unha moza ben nova",
+          "chords": [
+            [
+              1,
+              "Em"
+            ],
+            [
+              18,
+              "Am"
+            ]
+          ]
+        },
+        {
+          "text": "cando a súa vida cambiou,",
+          "chords": [
+            [
+              17,
+              "Am"
+            ],
+            [
+              20,
+              "Bm"
+            ]
+          ]
+        },
+        {
+          "text": "pois dun día para outro"
+        },
+        {
+          "text": "mocidade alí quedou."
+        },
+        {
+          "text": "Nunca lle deixou ao demo",
+          "chords": [
+            [
+              17,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "que o sorriso lle quitara,",
+          "chords": [
+            [
+              21,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "aprendeu pronto na vida",
+          "chords": [
+            [
+              21,
+              "Em"
+            ]
+          ]
+        },
+        {
+          "text": "que os amores se partillan.",
+          "chords": [
+            [
+              23,
+              "A"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Final",
+      "lines": [
+        {
+          "text": "E da súa vida aprendín",
+          "chords": [
+            [
+              19,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "que non se deixou vencer,",
+          "chords": [
+            [
+              21,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "inda que dea mil voltas,",
+          "chords": [
+            [
+              17,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "sempre te volves erguer.",
+          "chords": [
+            [
+              10,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "E se os anos van pasando",
+          "chords": [
+            [
+              22,
+              "D"
+            ]
+          ]
+        },
+        {
+          "text": "e nos apartan da vida,",
+          "chords": [
+            [
+              14,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "hai amores que son cegos...",
+          "chords": [
+            [
+              21,
+              "Em"
+            ]
+          ]
+        },
+        {
+          "text": "e non marchan mentres vivas!",
+          "chords": [
+            [
+              22,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "Hai amores que son cegos...",
+          "chords": [
+            [
+              15,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "e non marchan mentres vivas!",
+          "chords": [
+            [
+              22,
+              "A"
+            ]
+          ]
+        },
+        {
+          "text": "Hai amores que son cegos...",
+          "chords": [
+            [
+              15,
+              "E"
+            ]
+          ]
+        },
+        {
+          "text": "e non marchan mentres vivas!",
+          "chords": [
+            [
+              14,
+              "A"
+            ],
+            [
+              18,
+              "A"
+            ],
+            [
+              24,
+              "D"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

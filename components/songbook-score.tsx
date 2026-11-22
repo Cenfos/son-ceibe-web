@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Maximize2, X } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import scores from "@/lib/songbook-scores.json"
+import amoresCegos from "@/lib/songbook-score-amores-cegos.json"
 import noPuzleDaVida from "@/lib/songbook-score-no-puzle-da-vida.json"
 
 type Score = {
@@ -17,6 +18,7 @@ type Score = {
 
 const songbookScores: Record<string, Score> = {
   ...(scores as unknown as Record<string, Score>),
+  "amores-cegos": amoresCegos as unknown as Score,
   "no-puzle-da-vida": noPuzleDaVida as unknown as Score,
 }
 const chordClass = "font-mono font-bold text-[#a51620]"
@@ -136,7 +138,7 @@ export function SongbookScore({ id, title }: { id: string; title: string }) {
   const headingId = useId()
   const score = songbookScores[id]
   const wideVerses = id === "tatuaxes-na-memoria" || id === "foi-un-bico"
-  const alignWords = id === "na-mesa-das-lembranzas" || id === "toda-a-terra-no-cantar" || id === "o-home-da-terra-e-o-vento"
+  const alignWords = id === "amores-cegos" || id === "na-mesa-das-lembranzas" || id === "toda-a-terra-no-cantar" || id === "o-home-da-terra-e-o-vento"
 
   useLayoutEffect(() => {
     if (!expanded || !dialog.current || !viewport.current || !content.current) return
